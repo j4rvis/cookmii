@@ -1,10 +1,7 @@
 path = require("path")
 module.exports = (grunt) ->
-
-  # configure the tasks
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
-
     coffee:
       compile:
         expand: true
@@ -19,24 +16,32 @@ module.exports = (grunt) ->
     stylus:
       compile:
         options:
+          paths: ["assets/stylesheets/"]
           compress: false
+
         files: [
           expand: true
-          cwd: "/assets/stylesheets"
-          scr: ["**/*.styl"]
-          dest: "/public/stylesheets"
+          cwd: "assets/stylesheets"
+          src: ["**/*.styl"]
+          dest: "public/stylesheets"
           ext: ".css"
-          ]
+        ]
 
-    jade:
-      compile:
-        sources:
-          files:
-            cwd: "assets/"
-            scr: ["views/**/*.jade"]
-            dest: "public/"
-            ext: ".html"
-
+    # jade: {
+    #   compile: {
+    #     options: {
+    #       paths: ['assets/views/'],
+    #       compress: false
+    #     },
+    #     files: [{
+    #       expand: true,
+    #       cwd: 'assets/views',
+    #       src: [ '**/*.jade' ],
+    #       dest: 'public/views',
+    #       ext: '.html'
+    #     }]
+    #   }
+    # },
     watch:
       files: [path.resolve(__dirname, "") + "/{,*/}*.*"]
       options:
@@ -48,21 +53,19 @@ module.exports = (grunt) ->
           port: 3000
           hostname: "localhost"
           livereload: true
-          bases: "public"
+          bases: path.resolve("public")
           server: path.resolve("app.coffee")
+          debug: true
 
-
-  # load the tasks
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-express"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
-
-  # define the tasks
   grunt.registerTask "default", "Watches the project for changes, automatically builds them and runs a server.", [
-    "coffee"
     "express"
+    "coffee"
+    "stylus"
     "watch"
   ]
   return

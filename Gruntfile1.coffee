@@ -4,6 +4,7 @@ module.exports = (grunt) ->
   # configure the tasks
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
+
     coffee:
       compile:
         expand: true
@@ -14,6 +15,27 @@ module.exports = (grunt) ->
         ]
         dest: "public/"
         ext: ".js"
+
+    stylus:
+      compile:
+        options:
+          compress: false
+        files: [
+          expand: true
+          cwd: "/assets/stylesheets"
+          scr: ["**/*.styl"]
+          dest: "/public/stylesheets"
+          ext: ".css"
+          ]
+
+    jade:
+      compile:
+        sources:
+          files:
+            cwd: "assets/"
+            scr: ["views/**/*.jade"]
+            dest: "public/"
+            ext: ".html"
 
     watch:
       files: [path.resolve(__dirname, "") + "/{,*/}*.*"]

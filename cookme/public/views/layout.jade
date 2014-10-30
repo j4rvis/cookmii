@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+    //- enables adding styles
+    block styles
+    //- enables adding additional JS Libraries
+    block libraries
+  body
+    include header
+    main
+      block content
+    //- enables adding scripts to the bottom of the file
+    block scripts

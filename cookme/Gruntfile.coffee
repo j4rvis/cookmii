@@ -18,7 +18,6 @@ module.exports = (grunt) ->
         options:
           paths: ["assets/stylesheets/"]
           compress: false
-
         files: [
           expand: true
           cwd: "assets/stylesheets"
@@ -26,26 +25,22 @@ module.exports = (grunt) ->
           dest: "public/stylesheets"
           ext: ".css"
         ]
-
-    # jade: {
-    #   compile: {
-    #     options: {
-    #       paths: ['assets/views/'],
-    #       compress: false
-    #     },
-    #     files: [{
-    #       expand: true,
-    #       cwd: 'assets/views',
-    #       src: [ '**/*.jade' ],
-    #       dest: 'public/views',
-    #       ext: '.html'
-    #     }]
-    #   }
-    # },
+    
     watch:
-      files: [path.resolve(__dirname, "") + "/{,*/}*.*"]
+      views:
+        files: ['public/views/**/*.jade']
+      coffee:
+        files: [
+          'assets/routes/**/*.coffee',
+          'assets/javascripts/**/*.coffee'
+        ]
+        tasks: ['coffee']
+      stylus:
+        files: ['assets/stylesheets/**/*.styl'],
+        tasks: ['stylus']
       options:
         livereload: true
+        serverreload: true
 
     express:
       server:

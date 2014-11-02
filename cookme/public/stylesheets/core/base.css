@@ -5,15 +5,16 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-}
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.25em 0;
 }

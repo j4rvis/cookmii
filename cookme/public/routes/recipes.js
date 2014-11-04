@@ -6,8 +6,8 @@
   router = express.Router();
 
   router.get('/', function(req, res) {
-    return res.render('index', {
-      title: 'CookMii'
+    return res.render('recipes/index', {
+      title: 'CookMii - Recipes'
     });
   });
 

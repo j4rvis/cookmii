@@ -1,10 +1,14 @@
-express = require("express")
-path = require("path")
-favicon = require("static-favicon")
-logger = require("morgan")
-cookieParser = require("cookie-parser")
-bodyParser = require("body-parser")
-routes = require("./public/routes/index")
+express = require "express"
+path = require "path"
+favicon = require "static-favicon"
+logger = require "morgan"
+cookieParser = require "cookie-parser"
+bodyParser = require "body-parser"
+
+routes = require "./public/routes/index"
+recipes = require "./public/routes/recipes"
+
+
 app = express()
 
 # view engine setup
@@ -16,7 +20,9 @@ app.use bodyParser.json()
 app.use bodyParser.urlencoded()
 app.use cookieParser()
 app.use express.static(path.join(__dirname, "public"))
+
 app.use "/", routes
+app.use "/recipes", recipes
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->

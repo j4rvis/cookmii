@@ -26,11 +26,11 @@ module.exports = (grunt) ->
     stylus:
       compile:
         options:
-          paths: ["assets/stylesheets/"]
+          paths: ["app/assets/stylesheets/"]
           compress: false
         files: [
           expand: true
-          cwd: "assets/stylesheets"
+          cwd: "app/assets/stylesheets"
           src: ["**/*.styl"]
           dest: "public/stylesheets"
           ext: ".css"
@@ -38,15 +38,15 @@ module.exports = (grunt) ->
     
     watch:
       views:
-        files: ['public/views/**/*.jade']
+        files: ['app/views/**/*.jade']
       coffee:
         files: [
-          'assets/routes/**/*.coffee',
-          'assets/javascripts/**/*.coffee'
+          'app/routes/**/*.coffee',
+          'app/assets/javascripts/**/*.coffee'
         ]
         tasks: ['coffee']
       stylus:
-        files: ['assets/stylesheets/**/*.styl'],
+        files: ['app/assets/stylesheets/**/*.styl'],
         tasks: ['stylus']
       options:
         livereload: true
@@ -68,9 +68,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
   grunt.registerTask "default", "Watches the project for changes, automatically builds them and runs a server.", [
-    "express"
     "coffee"
     "stylus"
+    "express"
     "watch"
   ]
   return

@@ -10,7 +10,8 @@
     padding 0 10px
   order 1
 .recipe--container-second
-  padding 0 10px
+  @media desktop
+    padding 0 10px
   order 2
 .recipe--container-third
   padding 0 10px
@@ -78,3 +79,51 @@
     background $green
     width 180px
     height 130px
+
+.recipe--input
+  display flex
+  flex-direction row
+  margin-bottom 20px
+  label
+    display none
+  input, .textarea
+    color black
+    margin 10px 2%
+    font-size 5rem
+    @media mobile
+      width 96%
+    border 0
+    border-bottom 5px solid $grey
+    background $grey-light
+    &:focus
+      border-box 0
+      border 0
+      border-bottom 5px solid $orange
+      outline-offset 0
+      outline 0
+  input
+    height 150px
+  .textarea
+    display inline-block
+    min-height 130px
+    &[contenteditable=true]:empty:before
+      content attr(placeholder)
+      color $grey
+    
+@media desktop
+  .recipe--input
+    label
+      display block
+      flex 2.5
+    input, .textarea
+      flex 7.5
+      margin 0
+      font-size 1rem
+      border-bottom 2px solid $grey
+      &:focus
+        border-bottom 2px solid $orange
+    input
+      height 30px
+    .textarea
+      min-height 30px
+      

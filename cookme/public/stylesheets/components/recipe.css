@@ -13,8 +13,12 @@
   padding: 0 10px;
 }
 .recipe--container-second {
-  padding: 0 10px;
   order: 2;
+}
+@media desktop {
+  .recipe--container-second {
+    padding: 0 10px;
+  }
 }
 .recipe--container-third {
   padding: 0 10px;
@@ -93,4 +97,69 @@
   background: $green;
   width: 180px;
   height: 130px;
+}
+.recipe--input {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.recipe--input label {
+  display: none;
+}
+.recipe--input input,
+.recipe--input .textarea {
+  color: #000;
+  margin: 10px 2%;
+  font-size: 5rem;
+  border: 0;
+  border-bottom: 5px solid $grey;
+  background: $grey-light;
+}
+@media mobile {
+  .recipe--input input,
+  .recipe--input .textarea {
+    width: 96%;
+  }
+}
+.recipe--input input:focus,
+.recipe--input .textarea:focus {
+  border-box: 0;
+  border: 0;
+  border-bottom: 5px solid $orange;
+  outline-offset: 0;
+  outline: 0;
+}
+.recipe--input input {
+  height: 150px;
+}
+.recipe--input .textarea {
+  display: inline-block;
+  min-height: 130px;
+}
+.recipe--input .textarea[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  color: $grey;
+}
+@media desktop {
+  .recipe--input label {
+    display: block;
+    flex: 2.5;
+  }
+  .recipe--input input,
+  .recipe--input .textarea {
+    flex: 7.5;
+    margin: 0;
+    font-size: 1rem;
+    border-bottom: 2px solid $grey;
+  }
+  .recipe--input input:focus,
+  .recipe--input .textarea:focus {
+    border-bottom: 2px solid $orange;
+  }
+  .recipe--input input {
+    height: 30px;
+  }
+  .recipe--input .textarea {
+    min-height: 30px;
+  }
 }

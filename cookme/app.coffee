@@ -4,10 +4,15 @@ favicon = require "static-favicon"
 logger = require "morgan"
 cookieParser = require "cookie-parser"
 bodyParser = require "body-parser"
+methodOverride  = require 'method-override'
 Promise = require "bluebird"
+mongoose = require 'mongoose'
 
 routes = require "./src/routes/index"
 recipes = require "./src/routes/recipes"
+
+# local
+mongoose.connect 'mongodb://localhost:27017/cookme'
 
 app = express()
 
@@ -19,10 +24,11 @@ app.use logger("dev")
 app.use bodyParser.json()
 app.use bodyParser.urlencoded()
 app.use cookieParser()
+app.use methodOverride()
 app.use express.static(path.join(__dirname, "public"))
 
 app.use "/", routes
-app.use "/recipes", recipes
+recipes(app)
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->

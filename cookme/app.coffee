@@ -4,15 +4,15 @@ favicon = require "static-favicon"
 logger = require "morgan"
 cookieParser = require "cookie-parser"
 bodyParser = require "body-parser"
+Promise = require "bluebird"
 
-routes = require "./public/routes/index"
-recipes = require "./public/routes/recipes"
-
+routes = require "./src/routes/index"
+recipes = require "./src/routes/recipes"
 
 app = express()
 
 # view engine setup
-app.set "views", path.join(__dirname, "public/views")
+app.set "views", path.join(__dirname, "app/views")
 app.set "view engine", "jade"
 app.use favicon()
 app.use logger("dev")

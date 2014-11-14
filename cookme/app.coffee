@@ -8,8 +8,7 @@ methodOverride  = require 'method-override'
 Promise = require "bluebird"
 mongoose = require 'mongoose'
 
-routes = require "./src/routes/index"
-recipes = require "./src/routes/recipes"
+routes = require "./src/routes"
 
 # local
 mongoose.connect 'mongodb://localhost:27017/cookme'
@@ -27,8 +26,7 @@ app.use cookieParser()
 app.use methodOverride()
 app.use express.static(path.join(__dirname, "public"))
 
-app.use "/", routes
-recipes(app)
+routes(app)
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->

@@ -1,11 +1,9 @@
 (function() {
-  var CategorySchema, FavoriteSchema, IngredientSchema, RecipeSchema, Schema, async, mongoose;
+  var CategorySchema, FavoriteSchema, IngredientSchema, RecipeSchema, Schema, mongoose;
 
   mongoose = require('mongoose');
 
   Schema = mongoose.Schema;
-
-  async = require('async');
 
   IngredientSchema = new Schema({
     name: String,

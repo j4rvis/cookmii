@@ -1,6 +1,5 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
-async = require 'async'
 
 IngredientSchema = new Schema
   name: String

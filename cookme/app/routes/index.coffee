@@ -1,8 +1,2 @@
-express = require 'express'
-router = express.Router()
-
-router.get '/', (req, res) ->
-  res.render 'index',
-    title: 'CookMii'
-
-module.exports = router;
+module.exports = (app)->
+  require('./recipes')(app)

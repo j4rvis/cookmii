@@ -1,16 +1,6 @@
 (function() {
-  var express, router;
-
-  express = require('express');
-
-  router = express.Router();
-
-  router.get('/', function(req, res) {
-    return res.render('index', {
-      title: 'CookMii'
-    });
-  });
-
-  module.exports = router;
+  module.exports = function(app) {
+    return require('./recipes')(app);
+  };
 
 }).call(this);

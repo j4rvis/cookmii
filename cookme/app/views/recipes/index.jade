@@ -1,14 +1,5 @@
 extends ../layout
 
 block content
-  #container
-    .item
-    .item
-    .item
-    .item
-    .item
-    .item
-    .item
-    .item
-    .item
-    .item
+  each item in items
+    p= item.name

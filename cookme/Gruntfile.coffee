@@ -7,7 +7,8 @@ module.exports = (grunt) ->
         expand: true
         cwd: "app"
         src: [
-          "routes/*.coffee"
+          "routes/**/*.coffee"
+          "controller/**/*.coffee"
           "config/*.coffee"
           "models/*.coffee"
         ]
@@ -52,6 +53,12 @@ module.exports = (grunt) ->
         livereload: true
         serverreload: true
 
+    clean: [
+      'src/*'
+      'public/stylesheets/*'
+      'public/javascripts/*'
+    ]
+
     express:
       server:
         options:
@@ -67,7 +74,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-express"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
-  grunt.registerTask "default", "Watches the project for changes, automatically builds them and runs a server.", [
+  grunt.loadNpmTasks "grunt-contrib-clean"
+
+  grunt.registerTask "default",
+  "Watches the project for changes, automatically builds them and runs a server.", [
+    "clean"
     "coffee"
     "stylus"
     "express"

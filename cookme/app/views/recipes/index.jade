@@ -1,5 +1,7 @@
 extends ../layout
 
 block content
-  each item in items
-    p= item.name
+  each recipe in recipes
+    p
+      = recipe.name
+      span  #{recipe.slug}

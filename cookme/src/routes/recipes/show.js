@@ -1,10 +1,15 @@
 (function() {
-  module.exports = function(app, model) {
+  module.exports = function(app, Recipe) {
     return app.route('/recipes/:slug').get(function(req, res) {
-      var title;
-      title = "CookMii - " + req.params.slug;
-      return res.render('recipes/show', {
-        title: title
+      return Recipe.findOne({
+        "slug": req.params.slug
+      }, function(err, recipe) {
+        if (err) {
+          res.send(err);
+        }
+        return res.render('recipes/show', {
+          recipe: recipe
+        });
       });
     });
   };

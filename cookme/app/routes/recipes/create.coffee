@@ -1,7 +1,6 @@
 module.exports = (app, model) ->
   app.route('/recipes/new')
     .get (req, res) ->
-      console.log "new"
       res.render 'recipes/new',
         title: "CookMii - New Recipe"
     .post (req, res) ->
@@ -10,4 +9,3 @@ module.exports = (app, model) ->
       console.log req.body.email
       res.redirect 'recipes/new',
         title: "CookMii - New Recipe"
-  

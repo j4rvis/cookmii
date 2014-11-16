@@ -11,4 +11,12 @@
     });
   };
 
+  exports.findOne = function(slug, callback) {
+    return model.findOne({
+      'slug': slug
+    }, function(err, recipes) {
+      return callback(err, recipes);
+    });
+  };
+
 }).call(this);

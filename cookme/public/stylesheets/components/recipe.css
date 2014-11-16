@@ -110,7 +110,7 @@
 .recipe--input .textarea {
   color: #000;
   margin: 10px 2%;
-  font-size: 5rem;
+  font-size: 5em;
   border: 0;
   border-bottom: 5px solid $grey;
   background: $grey-light;
@@ -149,7 +149,7 @@
   .recipe--input .textarea {
     flex: 7.5;
     margin: 0;
-    font-size: 1rem;
+    font-size: 1em;
     border-bottom: 2px solid $grey;
   }
   .recipe--input input:focus,

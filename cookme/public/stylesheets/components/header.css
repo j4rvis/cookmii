@@ -1,6 +1,6 @@
 .header--logo {
   margin: 20px;
-  font-size: 8rem;
+  font-size: 1.5em;
   flex: 1;
 }
 .header--logo a {
@@ -9,12 +9,12 @@
 }
 @media desktop {
   .header--logo {
-    font-size: 3rem;
+    font-size: 3em;
   }
 }
 .header--burger {
   color: #000;
-  font-size: 8rem;
+  font-size: 2em;
   padding: 35px;
   float: left;
 }
@@ -26,6 +26,7 @@
     height: 150%;
     background: $orange;
     text-align: center;
+    z-index: 1;
   }
   nav ul {
     list-style: none;
@@ -37,7 +38,7 @@
   nav ul li a {
     text-decoration: none;
     color: #fff;
-    font-size: 6rem;
+    font-size: 1em;
   }
 }
 @media desktop {
@@ -60,7 +61,7 @@
     background: $orange-light;
   }
   nav ul li a {
-    font-size: 1.25rem;
+    font-size: 1.25em;
     color: #fff;
     text-decoration: none;
   }

@@ -1,0 +1,16 @@
+@media mobile {
+  .form-group {
+    margin-top: 50px;
+  }
+  .form-group label {
+    display: none;
+  }
+  .form-control {
+    height: 100px !important;
+    display: inline-block;
+    font-size: 1em;
+  }
+  .btn {
+    font-size: 1em;
+  }
+}

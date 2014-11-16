@@ -3,18 +3,29 @@ html
   head
     title= title
     block styles
-    link(rel='stylesheet', href='/stylesheets/styles.css')
+
+    link(rel="stylesheet", href="/bootstrap/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/dist/css/ripples.min.css")
+    link(rel="stylesheet", href="/dist/css/material-wfont.min.css")
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/styles.css')
     //- enables adding styles
-    script(src="/libs/jquery-1.11.1.min.js")
-    script(src="/libs/isotope.pkgd.js")
-    script(src="/javascripts/events.js")
-    script(src="/javascripts/isotope.js")
-    //- enables adding additional JS Libraries
-    block libraries
   body
     include header
     main
       block content
+
+    script(src="/libs/jquery-1.11.1.min.js")
+    script(src="/bootstrap/js/bootstrap.min.js")
+    script(src="/dist/js/ripples.min.js")
+    script(src="/dist/js/material.min.js")
+    script(src="/libs/isotope.pkgd.js")
+    script(src="/javascripts/events.js")
+    script(src="/javascripts/isotope.js")
     //- enables adding scripts to the bottom of the file
     block scripts
+
+    script.
+      $(document).ready(function(){
+        $.material.init();
+      });

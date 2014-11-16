@@ -1,7 +1,6 @@
 (function() {
   module.exports = function(app, model) {
     return app.route('/recipes/new').get(function(req, res) {
-      console.log("new");
       return res.render('recipes/new', {
         title: "CookMii - New Recipe"
       });

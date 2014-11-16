@@ -33,6 +33,7 @@ main {
   overflow-y: auto;
   background: $grey-light;
   flex: 9;
+  font-size: 1em;
 }
 @media desktop {
   main {

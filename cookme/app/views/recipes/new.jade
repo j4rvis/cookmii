@@ -1,18 +1,18 @@
 extends ../layout
 
 block content
-  form.recipe(method="POST")
-    .recipe--container-first
-      .recipe--input
-        label(for="inputName") Name
-        input#inputName(name="name",type="text", placeholder="Name")
-      .recipe--input
-        label(for="inputEmail3") Email
-        .textarea#inputEmail3(type="text",name="manual",contentEditable="true", placeholder="Manual")
-    .recipe--container-second
-      .recipe--input
-        label(for="inputEmail3") Email
-        input#inputEmail3(name="email",type="email", placeholder="Email")
-    .recipe--container-third
+  form.form-horizontal(method="POST", action="/recipes/new")
+    .col-md-6
+      .form-group.has-success
+        label#inputName.control-label.col-lg-2 Name
+        .col-lg-10
+          input.form-control#inputName(type="text", placeholder="Name", name="name")
+    .col-md-6
+      .form-group.has-success
+        label#inputManual.control-label.col-lg-2 Anleitung
+        .col-lg-10
+          textarea.form-control#inputManual(type="text", placeholder="Anleitung", name="manual")
+    .col-md-12
       input(type="hidden" name="_method" value="put")
-      input(type='submit', value="Bestätigen")
+      button.btn.btn-default(type="reset") Abbrechen
+      button.btn.btn-default(type="submit") Bestätigen

@@ -21,8 +21,8 @@ RecipeSchema = new Schema
   isPublic: Boolean
   favorites: [FavoriteSchema]
   ingredients: [IngredientSchema]
-  catagories: [CategorySchema]
-  updated: 
+  categories: [CategorySchema]
+  updated:
     type: Date
     default: Date.now
 

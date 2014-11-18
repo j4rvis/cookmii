@@ -1,18 +1,35 @@
 extends ../layout
 
 block content
-  form.form-horizontal(method="POST", action="/recipes/new")
+  .hidden
+    +ingredient
+    +category
+  form.form-horizontal(method="POST",enctype="multipart/form-data")
     .col-md-6
-      .form-group.has-success
-        label#inputName.control-label.col-lg-2 Name
-        .col-lg-10
-          input.form-control#inputName(type="text", placeholder="Name", name="name")
+      +input('text', 'Name', 'name', true)
+      +input('file', 'Bild', 'image', true)
+      +input('checkbox', 'Öffentlich?', 'isPublic', false)
+
+      .form-group
+        label.control-label.col-md-3 Zutaten
+        .col-md-9.js--ingredients-container
+          +ingredient
+          +ingredient
+          +ingredient
+        .col-md-9.pull-right
+          button.btn.btn-success.js--add-ingredient(type="button") Neue Zutat
+      .form-group
+        label.control-label.col-md-3 Kategorien
+        .col-md-9.js--categories-container
+          +category
+          +category
+          +category
+        .col-md-9.pull-right
+          button.btn.btn-success.js--add-category(type="button") Neue Kategorie
     .col-md-6
-      .form-group.has-success
-        label#inputManual.control-label.col-lg-2 Anleitung
-        .col-lg-10
-          textarea.form-control#inputManual(type="text", placeholder="Anleitung", name="manual")
+      +textarea('Anleitung', 'manual')
     .col-md-12
       input(type="hidden" name="_method" value="put")
-      button.btn.btn-default(type="reset") Abbrechen
-      button.btn.btn-default(type="submit") Bestätigen
+      .pull-right
+        button.btn.btn-default(type="reset") Abbrechen
+        button.btn.btn-success(type="submit") Erstellen

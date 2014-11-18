@@ -1,7 +1,7 @@
 module.exports = (app, Recipe) ->
   app.route('/recipes')
     .get (req, res) ->
-      Recipe.find 'public':true, (err, recipes) ->
+      Recipe.model.find {} , (err, recipes) ->
         if(err)
           res.send(err)
         res.render 'recipes/index',
@@ -9,7 +9,7 @@ module.exports = (app, Recipe) ->
 
   app.route('/myrecipes')
     .get (req, res) ->
-      Recipe.find 'author':res.locals.user.local.username
+      Recipe.model.find 'author':res.locals.user.local.username
       (err, recipes) ->
         if(err)
           res.send(err)
@@ -18,7 +18,7 @@ module.exports = (app, Recipe) ->
 
   app.route('/favorites')
     .get (req, res) ->
-      Recipe.find 'favorites.user':res.locals.user.local.username
+      Recipe.model.find 'favorites.user':res.locals.user.local.username
       (err, recipes) ->
         if(err)
           res.send(err)

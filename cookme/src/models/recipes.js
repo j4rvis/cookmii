@@ -28,7 +28,7 @@
     isPublic: Boolean,
     favorites: [FavoriteSchema],
     ingredients: [IngredientSchema],
-    catagories: [CategorySchema],
+    categories: [CategorySchema],
     updated: {
       type: Date,
       "default": Date.now

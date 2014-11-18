@@ -10,6 +10,7 @@
     "bluebird": "^2.3.10",
     "body-parser": "~1.0.0",
     "bookshelf": "^0.7.9",
+    "connect-multiparty": "^1.2.5",
     "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
     "express": "~4.2.0",

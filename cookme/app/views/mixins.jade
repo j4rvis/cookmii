@@ -1,0 +1,39 @@
+mixin input(type,title,name,required)
+  .form-group
+    label.control-label.col-md-3= title
+    .col-md-9
+      if type == 'file'
+        input(type=type, placeholder=title, name=name, required=required)
+      else
+        input.form-control(type=type, placeholder=title, name=name, required=required)
+mixin textarea(title,name)
+  .form-group
+    label.control-label.col-md-3= title
+    .col-md-9
+      textarea.form-control(placeholder=title, name=name)
+mixin ingredient
+  .form-group.js--ingredient-form
+    .col-3.pull-left
+      input.form-control.input-sm(type="number", placeholder="Menge", name="ingredients[quantity]")
+    .col-2.pull-left
+      select.form-control.input-sm(name="ingredients[unit]")
+        option mg
+        option kg
+        option gr
+        option Bund
+        option Stk.
+    .col-4.pull-left
+      input.form-control.input-sm(type="text", placeholder="Zutat", name="ingredients[name]")
+    .col-1.pull-left
+      button.js--fieldset-delete.close(type="button")
+        span(aria-hidden="true") &times;
+        span.sr-only Close
+
+mixin category
+  .form-group.js--category-form
+    .col-9.pull-left
+      input.form-control.input-sm(type="text", placeholder="Kategorie", name="categories[name]")
+    .col-1.pull-left
+      button.js--fieldset-delete.close(type="button")
+        span(aria-hidden="true") &times;
+        span.sr-only Close

@@ -1,7 +1,8 @@
 module.exports = (app, Recipe) ->
   app.route('/recipes/:slug')
     .get (req, res) ->
-      Recipe.findOne "slug": req.params.slug, (err, recipe) ->
+      Recipe.model.findOne "slug": req.params.slug
+      (err, recipe) ->
         if(err)
           res.send(err)
         res.render 'recipes/show',

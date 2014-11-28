@@ -1,10 +1,12 @@
-module.exports = function (app, Recipe){
+module.exports = function (app){
+
+  var Recipe = app.locals.Recipe;
   var fs = require('fs');
   var multipart = require('connect-multiparty');
   var multipartMiddleware = multipart({uploadDir: __dirname + "/../../../public/uploads"});
 
   app.route('/recipes/:slug/edit')
-    .get( function (req, res){
+    .get( Recipe.isAuthor, function (req, res){
       Recipe.model.findOne({'slug': req.params.slug}, function (err, recipe){
         res.render('recipes/edit',{
           recipe: recipe,
@@ -20,7 +22,8 @@ module.exports = function (app, Recipe){
         recipe.name = req.body.name;
         recipe.slug = Recipe.slugify(req.body.name);
         recipe.manual = req.body.manual;
-        recipe.isPublic = typeof req.body.isPublic !== 'undefined' ? req.body.isPublic : false;
+        recipe.isPublic = typeof req.body.isPublic !== 'undefined' && req.body.isPublic==='on' ? true : false;
+
         if(req.files.image.size > 0){
           var tmp_path = req.files.image.path;
           var target_path = __dirname + "/../../../public/uploads/" + recipe.slug + '.jpg';

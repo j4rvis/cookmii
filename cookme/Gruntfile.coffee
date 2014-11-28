@@ -47,8 +47,13 @@ module.exports = (grunt) ->
         ]
         tasks: ['coffee']
       stylus:
-        files: ['app/assets/stylesheets/**/*.styl'],
+        files: ['app/assets/stylesheets/**/*.styl']
         tasks: ['stylus']
+      express:
+        files: ['*']
+        tasks: ['express:dev']
+        options:
+          spawn: false
       options:
         livereload: true
         serverreload: true

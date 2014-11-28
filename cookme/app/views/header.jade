@@ -6,12 +6,15 @@ header
     ul
       li
         a(href="/recipes/") Alle Rezepte
-      li
-        a(href="") Eigene Rezepte
-      li
-        a(href="") Favoriten
-      li
-        a(href="/recipes/new") Neues Rezept
+      -if(user)
+        li
+          a(href="") Eigene Rezepte
+        li
+          a(href="") Favoriten
+        li
+          a(href="/recipes/new") Neues Rezept
+        li
+          a(href="/users") Alle Nutzer
 
   .header--user
     .header--user-image

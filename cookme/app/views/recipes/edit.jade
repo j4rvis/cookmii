@@ -6,12 +6,26 @@ block content
     +category
   form.form-horizontal(method="POST",enctype="multipart/form-data")
     .col-md-6
-      +input('text', 'Name', 'name', true, recipe.name)
+      +input('Name')
+        input.form-control(
+          type='text'
+          name='name'
+          placeholder='Name'
+          required=true
+          value=recipe.name)
       - if(recipe.image)
         .recipe--image.recipe--image-edit
           img(style="background-image: url('../#{recipe.image}')")
-      +input('file', 'Neues Bild', 'image', false)
-      +input('checkbox', 'Öffentlich?', 'isPublic', false, recipe.isPublic)
+      +input('Neues Bild')
+        input.upload(
+          type='file'
+          name='image')
+      +input('Öffentlich?')
+        input.form-control(
+          type='checkbox'
+          name='isPublic'
+          placeholder='Öffentlich?'
+          checked=recipe.isPublic)
 
       .form-group
         label.control-label.col-md-3 Zutaten

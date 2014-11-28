@@ -10,15 +10,17 @@ mongoose = require 'mongoose'
 passport = require 'passport'
 session = require 'express-session'
 flash = require 'connect-flash'
+RedisStore = require('connect-redis')(session)
 
 routes = require "./app/routes"
 app = express()
 
+app.locals.passport = passport
 require('./app/config/passport')(passport)
 mongoose.connect 'mongodb://localhost:27017/cookmii_test'
 
-app.locals.UserModel = require("./app/models/users")
-app.locals.RecipeModel = require("./app/models/recipes")
+app.locals.UserModel = require("./app/models/User")
+app.locals.Recipe = require("./app/controller/RecipeController")
 # view engine setup
 app.set "views", path.join(__dirname, "app/views")
 app.set "view engine", "jade"
@@ -30,6 +32,7 @@ app.use cookieParser()
 app.use methodOverride()
 app.use express.static(path.join(__dirname, "public"))
 app.use session
+  store: new RedisStore()
   secret: 'ilovetullamore'
   saveUninitialized: true
   resave: true
@@ -41,7 +44,7 @@ app.use (req, res, next) ->
   res.locals.user = req.user
   next()
 
-routes(app, passport)
+routes(app)
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->

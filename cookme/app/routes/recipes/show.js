@@ -1,6 +1,8 @@
-module.exports = function (app, Recipe) {
+module.exports = function (app) {
+
+  var Recipe = app.locals.Recipe;
   app.route('/recipes/:slug')
-    .get(function (req, res){
+    .get(Recipe.isPublic, function (req, res){
       Recipe.model.findOne({"slug": req.params.slug}, function (err, recipe){
         if(err)
           res.send(err);

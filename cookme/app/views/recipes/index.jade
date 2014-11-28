@@ -21,3 +21,7 @@ block content
           th= recipe.author
           th= recipe.categories.length
           th= recipe.ingredients.length
+          -if(user.local.username == recipe.author)
+            th
+              a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
+                .fa.fa-pencil

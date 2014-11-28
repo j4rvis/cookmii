@@ -1,5 +1,6 @@
 module.exports = function(app, passport) {
 
+  var passport = app.locals.passport;
   app.route('/signup')
     .get(function (req, res) {
       res.render('users/signup', { message: req.flash('signupMessage') });

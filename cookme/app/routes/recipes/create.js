@@ -1,4 +1,6 @@
-module.exports = function (app, Recipe){
+module.exports = function (app){
+
+  var Recipe = app.locals.Recipe;
   var fs = require('fs');
   var multipart = require('connect-multiparty');
   var multipartMiddleware = multipart({uploadDir: __dirname + "/../../../public/uploads"});
@@ -9,7 +11,7 @@ module.exports = function (app, Recipe){
         title: "CookMii - New Recipe"
       });
     })
-    .post(multipartMiddleware, function (req, res){
+    .post(Recipe.isLoggedIn, multipartMiddleware, function (req, res){
       var ingredients = req.body.ingredients;
       var categories = req.body.categories;
       var recipe = new Recipe.model();
@@ -17,7 +19,8 @@ module.exports = function (app, Recipe){
       recipe.name = req.body.name;
       recipe.slug = Recipe.slugify(req.body.name);
       recipe.manual = req.body.manual;
-      recipe.isPublic = typeof req.body.isPublic !== 'undefined' ? req.body.isPublic : false;
+      recipe.isPublic = typeof req.body.isPublic !== 'undefined' && req.body.isPublic==='on' ? true : false;
+      recipe.author = res.locals.user.local.username;
       if(req.files.image.size > 0){
         var tmp_path = req.files.image.path;
         var target_path = __dirname + "/../../../public/uploads/" + recipe.slug + '.jpg';

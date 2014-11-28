@@ -1,21 +1,9 @@
-mixin input(type,title,name,required,value)
+mixin input(title)
   .form-group
     label.control-label.col-md-3= title
     .col-md-9
-      if type == 'file'
-        input(
-          type=type
-          placeholder=title
-          name=name
-          required=required
-          value=value).upload
-      else
-        input.form-control(
-          type=type
-          placeholder=title
-          name=name
-          required=required
-          value=value)
+      if block
+        block
 mixin textarea(title,name,value)
   .form-group
     label.control-label= title

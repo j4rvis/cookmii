@@ -1,14 +1,16 @@
-module.exports = function(app, passport){
+module.exports = function(app){
 
+
+  var passport = app.locals.passport;
   passport.isLoggedIn = function(req, res, next) {
     if (req.isAuthenticated())
       return next();
     res.redirect('/');
   }
 
-  require('./login')(app, passport);
-  require('./signup')(app, passport);
-  require('./logout')(app, passport);
-  require('./profile')(app, passport);
-  require('./list')(app, passport);
+  require('./login')(app);
+  require('./signup')(app);
+  require('./logout')(app);
+  require('./profile')(app);
+  require('./list')(app);
 }

@@ -6,8 +6,9 @@ block content
       .recipe--title
         h1
           = recipe.name
-          a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
-            .fa.fa-pencil  Bearbeiten
+          -if(user)
+            a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
+              .fa.fa-pencil  Bearbeiten
       .recipe--author
         span by #{recipe.author}
       ul.recipe--categories

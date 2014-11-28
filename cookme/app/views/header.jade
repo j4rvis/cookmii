@@ -13,3 +13,16 @@ header
       li
         a(href="/recipes/new") Neues Rezept
 
+  .header--user
+    .header--user-image
+      - if(user)
+        img(style="background-image:url(https://farm4.staticflickr.com/3847/15207650967_c26783888c_o.jpg);")
+    .header--user-actions
+      -if(user)
+        a(href="/profile") Profil
+        a(href="/logout") Logout
+      -else
+        a(href="/signup") Signup
+        a(href="/login") Login
+
+  .header--impressum

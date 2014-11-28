@@ -2,55 +2,79 @@
   a
     text-decoration none
     color white
-  margin 20px
+  margin-top 30px
   font-size 1.5em
   @media desktop
+    margin 20px 20px
     font-size 3em
-  flex 1
+  flex 2
 .header--burger
   color black
   font-size 2em
   padding 35px
   float left
-@media mobile
-  nav
+  @media desktop
+    &.fa
+      display none
+nav
+  @media mobile
+    top 190px
+    left 0
     display none
     position fixed
     width 100%
     height 150%
-    background $orange
+    background $orange-dark
     text-align center
     z-index 1
-    ul
-      list-style none
-      padding 0
-      li
-        padding 10px
-        a
-          text-decoration none
-          color white
-          font-size 1em
-
-@media desktop
-  .header--burger.fa
-    display none
-  nav
-    flex 8.5
-    ul
-      list-style none
+  @media desktop
+    flex 5
+  ul
+    list-style none
+    @media desktop
       text-align center
-      padding 0
-      li
-        padding 5px
+    padding 0
+    li
+      padding 10px
+      @media desktop
+        padding-right 30px
         height 40px
+        font-size 1.25em
+        line-height 20px
         &:hover
           background $orange-light
-        a
-          font-size 1.25em
-          color white
-          text-decoration none
+          font-size 1.5em
+          cursor pointer
+      a
+        @media desktop
+          float right
 
-  .header--impressum
+.header--user
+  @media mobile
+    display none
+  flex 2.5
+  display flex
+  flex-flow column nowrap
+  justify-content space-around
+  .header--user-image
+    flex 2
+    img
+      // border 1px solid black
+      box-shadow 0 10px 10px rgba(0,0,0,0.5)
+      border-radius 50px
+      background-size auto 100%
+      background-position-x center
+      width 100px
+      height 100px
+      // box-shadow inset 0
+      px 10px 10px rgba(0,0,0,.6)
+  .header--user-actions
+    display flex
+    color white
     flex 0.5
-    a
-      color white
+    flex-flow row nowrap
+    justify-content space-around
+    align-items flex-end
+
+.header--impressum
+  flex 0.5

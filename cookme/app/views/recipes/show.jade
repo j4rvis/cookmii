@@ -6,21 +6,26 @@ block content
       .recipe--title
         h1
           = recipe.name
+          a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
+            .fa.fa-pencil  Bearbeiten
       .recipe--author
         span by #{recipe.author}
       ul.recipe--categories
         -if(recipe.categories)
           each category in recipe.categories
-            li= category
+            li= category.name
       .recipe--image
-        img(style="background-image: url('http://s3-eu-west-1.amazonaws.com/jamieoliverprod/_int/rdb2/upload/1288_1_1408617456_lrg.jpg')")
+        if recipe.image!='' && recipe.image != undefined
+          img(style="background-image: url('#{recipe.image}')")
+        else
+          img(style="background-image: url('/static/default_recipe.jpg')")
     .recipe--container-second
       .recipe--ingredients
         h2 Ingredients
         -if(recipe.ingredients)
           each ingredient in recipe.ingredients
-            p= ingredient
+            p #{ingredient.quantity}#{ingredient.unit} #{ingredient.name}
     .recipe--container-third
       .recipe--manual
         h2 Manual
-        p= recipe.description
+        p= recipe.manual

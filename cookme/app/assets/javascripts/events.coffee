@@ -2,13 +2,13 @@ $ ->
 
   $('.js--ingredients-container, .js--categories-container').on 'fieldset-added', ->
     $(".js--fieldset-delete").on 'click', ->
-      $(this).parents('.js--ingredient-form, .js--category-form').hide()
+      $(this).parents('.js--ingredient-form, .js--category-form').remove()
 
   $(".header--burger").on 'click', ->
     $('nav').slideToggle(300)
 
   $(".js--fieldset-delete").on 'click', ->
-    $(this).parents('.js--ingredient-form, .js--category-form').hide()
+    $(this).parents('.js--ingredient-form, .js--category-form').remove()
 
   $('.js--add-ingredient').on 'click', ->
     $clone = $('.hidden > .js--ingredient-form').clone()

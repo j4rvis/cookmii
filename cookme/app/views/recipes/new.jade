@@ -7,7 +7,7 @@ block content
   form.form-horizontal(method="POST",enctype="multipart/form-data")
     .col-md-6
       +input('text', 'Name', 'name', true)
-      +input('file', 'Bild', 'image', true)
+      +input('file', 'Bild', 'image', false)
       +input('checkbox', 'Öffentlich?', 'isPublic', false)
 
       .form-group
@@ -31,5 +31,5 @@ block content
     .col-md-12
       input(type="hidden" name="_method" value="put")
       .pull-right
-        button.btn.btn-default(type="reset") Abbrechen
-        button.btn.btn-success(type="submit") Erstellen
+        button.btn.btn-lg.btn-default(type="reset") Abbrechen
+        button.btn.btn-lg.btn-success(type="submit") Erstellen

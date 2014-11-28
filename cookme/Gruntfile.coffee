@@ -36,7 +36,7 @@ module.exports = (grunt) ->
           dest: "public/stylesheets"
           ext: ".css"
         ]
-    
+
     watch:
       views:
         files: ['app/views/**/*.jade']
@@ -60,28 +60,25 @@ module.exports = (grunt) ->
     ]
 
     express:
-      server:
+      dev:
         options:
-          port: 3000
-          hostname: "localhost"
-          livereload: true
-          bases: path.resolve("public")
-          server: path.resolve("app.coffee")
-          debug: true
+          script: "./bin/www"
+          opts:  ["node_modules/coffee-script/bin/coffee"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"
-  grunt.loadNpmTasks "grunt-express"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
   grunt.loadNpmTasks "grunt-contrib-clean"
+  grunt.loadNpmTasks "grunt-express-server"
+  grunt.loadNpmTasks "grunt-exec"
 
   grunt.registerTask "default",
   "Watches the project for changes, automatically builds them and runs a server.", [
     "clean"
-    "coffee"
+    "coffee:assets"
     "stylus"
-    "express"
+    "express:dev"
     "watch"
   ]
   return

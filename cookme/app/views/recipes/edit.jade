@@ -1,3 +1,39 @@
 extends ../layout
 
 block content
+  .hidden
+    +ingredient
+    +category
+  form.form-horizontal(method="POST",enctype="multipart/form-data")
+    .col-md-6
+      +input('text', 'Name', 'name', true, recipe.name)
+      - if(recipe.image)
+        .recipe--image.recipe--image-edit
+          img(style="background-image: url('../#{recipe.image}')")
+      +input('file', 'Neues Bild', 'image', false)
+      +input('checkbox', 'Öffentlich?', 'isPublic', false, recipe.isPublic)
+
+      .form-group
+        label.control-label.col-md-3 Zutaten
+        .col-md-9.js--ingredients-container
+          -if(recipe.ingredients.length > 0)
+            each ingredient in recipe.ingredients
+              +ingredient(ingredient.name, ingredient.quantity, ingredient.unit)
+        .col-md-9.pull-right
+          button.btn.btn-success.js--add-ingredient(type="button") Neue Zutat
+      .form-group
+        label.control-label.col-md-3 Kategorien
+        .col-md-9.js--categories-container
+          -if(recipe.categories.length > 0)
+            each category in recipe.categories
+              +category(category.name)
+        .col-md-9.pull-right
+          button.btn.btn-success.js--add-category(type="button") Neue Kategorie
+    .col-md-6
+      +textarea('Anleitung', 'manual')
+        = recipe.manual
+    .col-md-12
+      input(type="hidden" name="_method" value="put")
+      .pull-right
+        button.btn.btn-lg.btn-default(type="reset") Abbrechen
+        button.btn.btn-lg.btn-success(type="submit") Übernehmen

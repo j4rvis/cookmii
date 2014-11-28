@@ -1,7 +1,23 @@
 extends ../layout
 
 block content
-  each recipe in recipes
-    p
-      = recipe.name
-      span  #{recipe.slug}
+  table.table.table-hover.table-responsive
+    caption Alle Rezepte
+    thead
+      tr
+        th Name
+        th Slug
+        th Author
+        th Kategorien
+        th Zutaten
+        th Actions
+    tbody
+      each recipe in recipes
+        tr
+          th
+            a.link--green(href="/recipes/#{recipe.slug}")
+              = recipe.name
+          th= recipe.slug
+          th= recipe.author
+          th= recipe.categories.length
+          th= recipe.ingredients.length

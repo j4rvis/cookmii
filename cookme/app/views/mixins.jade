@@ -1,38 +1,70 @@
-mixin input(type,title,name,required)
+mixin input(type,title,name,required,value)
   .form-group
     label.control-label.col-md-3= title
     .col-md-9
       if type == 'file'
-        input(type=type, placeholder=title, name=name, required=required)
+        input(
+          type=type
+          placeholder=title
+          name=name
+          required=required
+          value=value).upload
       else
-        input.form-control(type=type, placeholder=title, name=name, required=required)
-mixin textarea(title,name)
+        input.form-control(
+          type=type
+          placeholder=title
+          name=name
+          required=required
+          value=value)
+mixin textarea(title,name,value)
   .form-group
-    label.control-label.col-md-3= title
-    .col-md-9
-      textarea.form-control(placeholder=title, name=name)
-mixin ingredient
+    label.control-label= title
+    textarea.form-control(
+      placeholder=title
+      name=name
+      value=value)
+      if block
+        block
+mixin ingredient(name, quantity, unit)
   .form-group.js--ingredient-form
     .col-3.pull-left
-      input.form-control.input-sm(type="number", placeholder="Menge", name="ingredients[quantity]")
+      input.form-control.input-sm(
+        type="number"
+        placeholder="Menge"
+        name="ingredients[quantity]"
+        value=quantity)
     .col-2.pull-left
-      select.form-control.input-sm(name="ingredients[unit]")
+      select.form-control.input-sm(
+        name="ingredients[unit]"
+        value=unit)
+        option gr
+        option TL
+        option EL
+        option Stk
+        option Prise
+        option Bund
         option mg
         option kg
-        option gr
-        option Bund
-        option Stk.
+        option Dose
     .col-4.pull-left
-      input.form-control.input-sm(type="text", placeholder="Zutat", name="ingredients[name]")
+      input.form-control.input-sm(
+        type="text"
+        placeholder="Zutat"
+        name="ingredients[name]"
+        value=name)
     .col-1.pull-left
       button.js--fieldset-delete.close(type="button")
         span(aria-hidden="true") &times;
         span.sr-only Close
 
-mixin category
+mixin category(name)
   .form-group.js--category-form
     .col-9.pull-left
-      input.form-control.input-sm(type="text", placeholder="Kategorie", name="categories[name]")
+      input.form-control.input-sm(
+        type="text"
+        placeholder="Kategorie"
+        name="categories[name]"
+        value=name)
     .col-1.pull-left
       button.js--fieldset-delete.close(type="button")
         span(aria-hidden="true") &times;

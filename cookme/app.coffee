@@ -7,14 +7,18 @@ bodyParser = require "body-parser"
 methodOverride  = require 'method-override'
 Promise = require "bluebird"
 mongoose = require 'mongoose'
+passport = require 'passport'
+session = require 'express-session'
+flash = require 'connect-flash'
 
-routes = require "./src/routes"
-
-# local
-mongoose.connect 'mongodb://localhost:27017/cookme'
-
+routes = require "./app/routes"
 app = express()
 
+require('./app/config/passport')(passport)
+mongoose.connect 'mongodb://localhost:27017/cookmii_test'
+
+app.locals.UserModel = require("./app/models/users")
+app.locals.RecipeModel = require("./app/models/recipes")
 # view engine setup
 app.set "views", path.join(__dirname, "app/views")
 app.set "view engine", "jade"
@@ -25,8 +29,19 @@ app.use bodyParser.urlencoded()
 app.use cookieParser()
 app.use methodOverride()
 app.use express.static(path.join(__dirname, "public"))
+app.use session
+  secret: 'ilovetullamore'
+  saveUninitialized: true
+  resave: true
+app.use passport.initialize()
+app.use passport.session()
+app.use flash()
 
-routes(app)
+app.use (req, res, next) ->
+  res.locals.user = req.user
+  next()
+
+routes(app, passport)
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->

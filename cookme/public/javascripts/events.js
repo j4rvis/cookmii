@@ -2,14 +2,14 @@
   $(function() {
     $('.js--ingredients-container, .js--categories-container').on('fieldset-added', function() {
       return $(".js--fieldset-delete").on('click', function() {
-        return $(this).parents('.js--ingredient-form, .js--category-form').hide();
+        return $(this).parents('.js--ingredient-form, .js--category-form').remove();
       });
     });
     $(".header--burger").on('click', function() {
       return $('nav').slideToggle(300);
     });
     $(".js--fieldset-delete").on('click', function() {
-      return $(this).parents('.js--ingredient-form, .js--category-form').hide();
+      return $(this).parents('.js--ingredient-form, .js--category-form').remove();
     });
     $('.js--add-ingredient').on('click', function() {
       var $clone;

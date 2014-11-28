@@ -3,19 +3,36 @@
   flex-direction column
   flex-wrap wrap
   width 100%
+  @media desktop
+    flex-direction row
 .recipe--container-first
   .recipe--title,
   .recipe--categories,
   .recipe--author
     padding 0 10px
+    @media desktop
+      padding 0
+  @media desktop
+    min-width 400px
+    max-height 400px
+    flex 1
   order 1
 .recipe--container-second
   @media desktop
-    padding 0 10px
+    padding 0
+    min-width 350px
+    max-height 400px
+    padding-left 20px
+    overflow-y auto
+    flex 1
   order 2
 .recipe--container-third
+  margin-top 20px
   padding 0 10px
   order 3
+  @media desktop
+    padding 0
+    min-width 400px
 .recipe--categories
   padding 0
   list-style none
@@ -25,6 +42,9 @@
     font-style italic
     font-size 0.75em
     margin-right 10px
+    @media desktop
+      font-size 1.25em
+      margin-right 20px
   li:last
     margin-right 0
 .recipe--image
@@ -32,97 +52,19 @@
   height 600px
   overflow hidden
   text-align center
+  @media desktop
+    width 400px
+    height 250px
   img
     background-size 100% auto
     background-position-y center
     width 100%
     height 100%
     box-shadow inset 10px 10px 100px rgba(0,0,0,.6)
-
-@media desktop
-  .recipe
-    flex-direction row
-  .recipe--container-first
-    .recipe--title,
-    .recipe--categories,
-    .recipe--author
-      padding 0
-    min-width 400px
-    max-height 400px
-    flex 1
-  .recipe--container-second
+.recipe--image-edit
+  margin 60px 0 0 0
+  padding 50px
+  @media desktop
+    margin 0 0 20px auto
+    text-align center
     padding 0
-    min-width 350px
-    max-height 400px
-    padding-left 20px
-    overflow-y auto
-    flex 1
-  .recipe--container-third
-    padding 0
-    min-width 400px
-  .recipe--categories
-    li
-      font-size 1.25em
-      margin-right 20px
-  .recipe--image
-    margin-top 20px
-    width 400px
-    height 250px
-  /*.recipe--ingredients*/
-
-#container
-  width 100%
-  height 80%
-  height 480px
-  .item
-    padding 10px
-    background $green
-    width 180px
-    height 130px
-
-.recipe--input
-  display flex
-  flex-direction row
-  margin-bottom 20px
-  label
-    display none
-  input, .textarea
-    color black
-    margin 10px 2%
-    font-size 5em
-    @media mobile
-      width 96%
-    border 0
-    border-bottom 5px solid $grey
-    background $grey-light
-    &:focus
-      border-box 0
-      border 0
-      border-bottom 5px solid $orange
-      outline-offset 0
-      outline 0
-  input
-    height 150px
-  .textarea
-    display inline-block
-    min-height 130px
-    &[contenteditable=true]:empty:before
-      content attr(placeholder)
-      color $grey
-
-@media desktop
-  .recipe--input
-    label
-      display block
-      flex 2.5
-    input, .textarea
-      flex 7.5
-      margin 0
-      font-size 1em
-      border-bottom 2px solid $grey
-      &:focus
-        border-bottom 2px solid $orange
-    input
-      height 30px
-    .textarea
-      min-height 30px

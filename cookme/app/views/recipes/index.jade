@@ -6,22 +6,26 @@ block content
     thead
       tr
         th Name
-        th Slug
+        //- th Slug
+        th Public
         th Author
-        th Kategorien
-        th Zutaten
-        th Actions
+        th Cat.
+        th Ing.
+        -if(user)
+          th Actions
     tbody
       each recipe in recipes
         tr
           th
             a.link--green(href="/recipes/#{recipe.slug}")
               = recipe.name
-          th= recipe.slug
+          //- th= recipe.slug
+          th= recipe.isPublic
           th= recipe.author
           th= recipe.categories.length
           th= recipe.ingredients.length
-          -if(user.local.username == recipe.author)
-            th
-              a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
-                .fa.fa-pencil
+          -if(user)
+            -if(user.local.username == recipe.author)
+              th
+                a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
+                  .fa.fa-pencil

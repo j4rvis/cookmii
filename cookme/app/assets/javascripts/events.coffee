@@ -19,3 +19,17 @@ $ ->
     $clone = $('.hidden > .js--category-form').clone()
     $('.js--categories-container').append($clone)
     $('.js--categories-container').trigger('fieldset-added')
+
+  $('.js--recipe-delete').on 'click', (event)->
+    event.preventDefault()
+    confirmation = confirm("Möchtest du das Rezept wirklich löschen?")
+    if(confirmation)
+      $.ajax
+        type: 'DELETE'
+        url: '/recipes/' + $(@).data('path')
+      .done (response) ->
+        if (response.msg != '')
+          alert('Error: ' + response.msg)
+        window.location = '/recipes'
+    else
+      false

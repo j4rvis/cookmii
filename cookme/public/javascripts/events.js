@@ -17,11 +17,29 @@
       $('.js--ingredients-container').append($clone);
       return $('.js--ingredients-container').trigger('fieldset-added');
     });
-    return $('.js--add-category').on('click', function() {
+    $('.js--add-category').on('click', function() {
       var $clone;
       $clone = $('.hidden > .js--category-form').clone();
       $('.js--categories-container').append($clone);
       return $('.js--categories-container').trigger('fieldset-added');
+    });
+    return $('.js--recipe-delete').on('click', function(event) {
+      var confirmation;
+      event.preventDefault();
+      confirmation = confirm("Möchtest du das Rezept wirklich löschen?");
+      if (confirmation) {
+        return $.ajax({
+          type: 'DELETE',
+          url: '/recipes/' + $(this).data('path')
+        }).done(function(response) {
+          if (response.msg !== '') {
+            alert('Error: ' + response.msg);
+          }
+          return window.location = '/recipes';
+        });
+      } else {
+        return false;
+      }
     });
   });
 

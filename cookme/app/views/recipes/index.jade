@@ -27,5 +27,7 @@ block content
           -if(user)
             -if(user.local.username == recipe.author)
               th
-                a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
+                a.btn.btn-success.btn-sm(href="#{recipe.slug}/edit")
                   .fa.fa-pencil
+                a.btn.btn-danger.btn-sm.js--recipe-delete(data-path='#{recipe.slug}')
+                  .fa.fa-trash-o

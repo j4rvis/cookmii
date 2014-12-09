@@ -6,8 +6,10 @@ module.exports = function(app, passport) {
       res.render('users/login', { message: req.flash('loginMessage') });
     })
     .post(passport.authenticate('local-login', {
-      successRedirect : '/profile',
-      failureRedirect : '/login',
-      failureFlash : true
-    }));
+        failureRedirect : '/login',
+        failureFlash : true
+      }), function (req, res){
+        res.redirect("/"+req.user.local.username+"/profile");
+      }
+    );
 }

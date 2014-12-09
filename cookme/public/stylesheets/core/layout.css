@@ -32,7 +32,7 @@ header {
 }
 main {
   overflow-y: auto;
-  background: $grey-light;
+  background: $grey;
   flex: 9;
   font-size: 1em;
 }

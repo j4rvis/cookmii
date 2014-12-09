@@ -4,10 +4,8 @@ block content
   table.table.table-hover.table-responsive
     caption Alle Nutzer
     thead
-      tr
-        th Name
+      tr: th Name
     tbody
       each user in users
-        tr
-          th
-            p= user.local.username
+        tr: th: p: a.link--green(href="/#{user.local.username}/profile")
+          = user.local.username

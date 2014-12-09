@@ -1,7 +1,30 @@
 extends ../layout
 
 block content
-  h1 #{user.local.username}'s Profil
-  p #{user.local.email}
-  p ID: #{user._id}
-  p Password!: #{user.local.password}
+  h1 #{profile.local.username}'s Profil
+  p #{profile.local.email}
+  -if(recipes)
+    table.table.table-hover.table-responsive
+      caption #{profile.local.username}'s Rezepte
+      thead
+        tr
+          th Name
+          th Cat.
+          th Ing.
+          -if(user)
+            th Actions
+      tbody
+        each recipe in recipes
+          tr
+            th
+              a.link--green(href="/recipes/#{recipe.slug}")
+                = recipe.name
+            th= recipe.categories.length
+            th= recipe.ingredients.length
+            -if(user)
+              -if(profile.local.username == recipe.author)
+                th
+                  a.btn.btn-success.btn-sm(href="#{recipe.slug}/edit")
+                    .fa.fa-pencil
+                  a.btn.btn-danger.btn-sm.js--recipe-delete(data-path='#{recipe.slug}')
+                    .fa.fa-trash-o

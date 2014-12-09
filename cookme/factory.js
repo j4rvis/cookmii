@@ -46,7 +46,7 @@ var populateRecipe = function(_user, doneCallback) {
   recipe.author = _user;
   recipe.image = "http://lorempixel.com/640/480/food/";
 
-  for (var ing = 0; ing <= Math.floor(Math.random() * 10) + 1 ; ing++) {
+  for (var ing = 0; ing <= Math.floor(Math.random() * 20) + 1 ; ing++) {
     recipe.ingredients.push({
       name: ingredients[randomElement(ingredients.length)],
       quantity: Math.floor(Math.random() * 1000) + 1,

@@ -8,7 +8,7 @@ header
         a(href="/recipes/") Alle Rezepte
       -if(user)
         li
-          a(href="") Eigene Rezepte
+          a(href="/myrecipes/") Eigene Rezepte
         li
           a(href="") Favoriten
         li
@@ -22,7 +22,7 @@ header
         img(style="background-image:url(https://farm4.staticflickr.com/3847/15207650967_c26783888c_o.jpg);")
     .header--user-actions
       -if(user)
-        a(href="/profile") Profil
+        a(href="/#{user.local.username}/profile") Profil
         a(href="/logout") Logout
       -else
         a(href="/signup") Signup

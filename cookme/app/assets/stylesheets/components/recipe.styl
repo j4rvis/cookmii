@@ -14,7 +14,6 @@
       padding 0
   @media desktop
     min-width 400px
-    max-height 400px
     flex 1
   order 1
 .recipe--container-second
@@ -37,14 +36,14 @@
   padding 0
   list-style none
   display flex
-  flex-direction row
+  flex-flow row wrap
+  justify-content space-between
   li
     font-style italic
     font-size 0.75em
-    margin-right 10px
     @media desktop
       font-size 1.25em
-      margin-right 20px
+      margin-right 10px
   li:last
     margin-right 0
 .recipe--image

@@ -27,7 +27,6 @@
 @media desktop {
   .recipe--container-first {
     min-width: 400px;
-    max-height: 400px;
     flex: 1;
   }
 }
@@ -59,17 +58,17 @@
   padding: 0;
   list-style: none;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 .recipe--categories li {
   font-style: italic;
   font-size: 0.75em;
-  margin-right: 10px;
 }
 @media desktop {
   .recipe--categories li {
     font-size: 1.25em;
-    margin-right: 20px;
+    margin-right: 10px;
   }
 }
 .recipe--categories li:last {

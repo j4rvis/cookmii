@@ -34,6 +34,8 @@ module.exports = function (app){
               throw err;
           });
         });
+      } else {
+        recipe.image = req.body.image_url;
       }
       if(ingredients.name !== ''){
         ingredients.name.forEach(function(value, key){

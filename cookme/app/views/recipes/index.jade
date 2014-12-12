@@ -9,42 +9,10 @@ block content
             .fa.fa-star
             .card--fav-count
               = 20
-          //- Takes too long to load
-          //-
-          //- if recipe.image!='' && recipe.image != undefined
-          //-   img(style="background-image: url('#{recipe.image}')")
-          //- else
-          img(style="background-image: url('/static/default_recipe.jpg')")
+          a(href="/recipes/#{recipe.slug}")
+            if recipe.image!='' && recipe.image != undefined
+              img(style="background-image: url('#{recipe.image}')")
+            else
+              img(style="background-image: url('/static/default_recipe.jpg')")
         .card--title
           = recipe.name
-
-  //- table.table.table-hover.table-responsive
-  //-   caption Alle Rezepte
-  //-   thead
-  //-     tr
-  //-       th Name
-  //-       th Public
-  //-       th Author
-  //-       th Cat.
-  //-       th Ing.
-  //-       -if(user)
-  //-         th Actions
-  //-   tbody
-  //-     each recipe in recipes
-  //-       tr
-  //-         th
-  //-           a.link--green(href="/recipes/#{recipe.slug}")
-  //-             = recipe.name
-  //-         th= recipe.isPublic
-  //-           th
-  //-             a.link--green(href="/#{recipe.author}/profile")
-  //-               = recipe.author
-  //-         th= recipe.categories.length
-  //-         th= recipe.ingredients.length
-  //-         -if(user)
-  //-           -if(user.local.username == recipe.author)
-  //-             th
-  //-               a.btn.btn-success.btn-sm(href="#{recipe.slug}/edit")
-  //-                 .fa.fa-pencil
-  //-               a.btn.btn-danger.btn-sm.js--recipe-delete(data-path='#{recipe.slug}')
-  //-                 .fa.fa-trash-o

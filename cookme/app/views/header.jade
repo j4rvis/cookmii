@@ -1,11 +1,16 @@
 header
-  .header--burger.fa.fa-bars
+  //- .header--burger.fa.fa-bars
   .header--logo
-    a(href="/") CookMii
-  nav
+    a(href="/")
+      .fa.fa-spoon
+      .first Cook
+      .second Mii
+  .header--navigation
     ul
       li
         a(href="/recipes/") Alle Rezepte
+      li
+        a(href="/users") Alle Nutzer
       -if(user)
         li
           a(href="/myrecipes/") Eigene Rezepte
@@ -13,13 +18,14 @@ header
           a(href="") Favoriten
         li
           a(href="/recipes/new") Neues Rezept
-        li
-          a(href="/users") Alle Nutzer
 
+  //- .header--icon
+  //-   .fa.fa-user
   .header--user
     .header--user-image
       - if(user)
-        img(style="background-image:url(https://farm4.staticflickr.com/3847/15207650967_c26783888c_o.jpg);")
+        a(href="/#{user.local.username}/profile")
+          img(style="background-image:url(https://farm4.staticflickr.com/3847/15207650967_c26783888c_o.jpg);")
     .header--user-actions
       -if(user)
         a(href="/#{user.local.username}/profile") Profil
@@ -27,5 +33,3 @@ header
       -else
         a(href="/signup") Signup
         a(href="/login") Login
-
-  .header--impressum

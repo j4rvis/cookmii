@@ -6,9 +6,27 @@ block content
     +category
   form.form-horizontal(method="POST",enctype="multipart/form-data")
     .col-md-6
-      +input('text', 'Name', 'name', true)
-      +input('file', 'Bild', 'image', false)
-      +input('checkbox', 'Öffentlich?', 'isPublic', false)
+      +input('Name')
+        input.form-control(
+          type='text'
+          name='name'
+          placeholder='Name'
+          required=true)
+      +input('Image URL')
+        input.form-control(
+          type='url'
+          name='image_url'
+          placeholder='Image'
+          required=false)
+      +input('Image')
+        input.upload(
+          type='file'
+          name='image')
+      +input('Öffentlich?')
+        input.form-control(
+          type='checkbox'
+          name='isPublic'
+          placeholder='Öffentlich?')
 
       .form-group
         label.control-label.col-md-3 Zutaten

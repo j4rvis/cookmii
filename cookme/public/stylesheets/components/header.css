@@ -1,108 +1,74 @@
 .header--logo {
-  margin-top: 30px;
-  font-size: 1.5em;
-  flex: 2;
-}
-.header--logo a {
+  height: 100px;
+  width: 140px;
+  margin: 30px auto;
+  position: relative;
   text-decoration: none;
   color: #fff;
 }
-@media desktop {
-  .header--logo {
-    margin: 20px 20px;
-    font-size: 3em;
-  }
+.header--logo .fa-spoon {
+  font-size: 4em;
+  position: absolute;
+  left: 0;
 }
-.header--burger {
-  color: #000;
-  font-size: 2em;
-  padding: 35px;
-  float: left;
+.header--logo .first,
+.header--logo .second {
+  text-align: left;
+  padding-left: 40px;
+  font-size: 2.25em;
+  line-height: 35px;
 }
-@media desktop {
-  .header--burger.fa {
-    display: none;
-  }
+.header--navigation {
+  flex: 1;
 }
-@media mobile {
-  nav {
-    top: 190px;
-    left: 0;
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 150%;
-    background: $orange-dark;
-    text-align: center;
-    z-index: 1;
-  }
-}
-@media desktop {
-  nav {
-    flex: 5;
-  }
-}
-nav ul {
+.header--navigation ul {
   list-style: none;
+  text-align: center;
   padding: 0;
 }
-@media desktop {
-  nav ul {
-    text-align: center;
-  }
-}
-nav ul li {
+.header--navigation ul li {
+  text-align: left;
   padding: 10px;
+  padding-right: 30px;
+  height: 40px;
+  font-size: 1em;
+  line-height: 20px;
 }
-@media desktop {
-  nav ul li {
-    padding-right: 30px;
-    height: 40px;
-    font-size: 1.25em;
-    line-height: 20px;
-  }
-  nav ul li:hover {
-    background: $orange-light;
-    font-size: 1.5em;
-    cursor: pointer;
-  }
-}
-@media desktop {
-  nav ul li a {
-    float: right;
-  }
+.header--navigation ul li:hover {
+  background: $green;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 .header--user {
-  flex: 2.5;
+  height: 250px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
 }
-@media mobile {
-  .header--user {
-    display: none;
-  }
-}
-.header--user .header--user-image {
-  flex: 2;
-}
 .header--user .header--user-image img {
-  box-shadow: 0 10px 10px rgba(0,0,0,0.5);
   border-radius: 50px;
   background-size: auto 100%;
   background-position-x: center;
   width: 100px;
   height: 100px;
-  px: 10px 10px rgba(0,0,0,0.6);
+  border: 1px solid #666;
 }
 .header--user .header--user-actions {
   display: flex;
   color: #fff;
   flex: 0.5;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: flex-end;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  padding-bottom: 30px;
 }
-.header--impressum {
-  flex: 0.5;
+.header--user .header--user-actions a {
+  padding: 10px;
+  margin: 0 auto 10px auto;
+  width: 80%;
+  background: $green;
+  box-shadow: 0 4px 0 $green-dark;
+  border-radius: 5px;
+}
+.header--user .header--user-actions a:hover {
+  background: $green-dark;
 }

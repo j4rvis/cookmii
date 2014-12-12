@@ -3,17 +3,6 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
     coffee:
-      src:
-        expand: true
-        cwd: "app"
-        src: [
-          "routes/**/*.coffee"
-          "controller/**/*.coffee"
-          "config/*.coffee"
-          "models/*.coffee"
-        ]
-        dest: "src/"
-        ext: ".js"
       assets:
         expand: true
         cwd: "app/assets"

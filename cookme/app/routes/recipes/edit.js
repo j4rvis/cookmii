@@ -37,7 +37,10 @@ module.exports = function (app){
             });
           });
           recipe.image = image_path;
+        } else {
+          recipe.image = req.body.image_url;
         }
+
         while(recipe.ingredients.length){
           recipe.ingredients.pop();
         }

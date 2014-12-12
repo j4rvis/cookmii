@@ -3,28 +3,18 @@ extends ../layout
 block content
   h1 #{profile.local.username}'s Profil
   p #{profile.local.email}
-  -if(recipes)
-    table.table.table-hover.table-responsive
-      caption #{profile.local.username}'s Rezepte
-      thead
-        tr
-          th Name
-          th Cat.
-          th Ing.
-          -if(user)
-            th Actions
-      tbody
-        each recipe in recipes
-          tr
-            th
-              a.link--green(href="/recipes/#{recipe.slug}")
-                = recipe.name
-            th= recipe.categories.length
-            th= recipe.ingredients.length
-            -if(user)
-              -if(profile.local.username == recipe.author)
-                th
-                  a.btn.btn-success.btn-sm(href="#{recipe.slug}/edit")
-                    .fa.fa-pencil
-                  a.btn.btn-danger.btn-sm.js--recipe-delete(data-path='#{recipe.slug}')
-                    .fa.fa-trash-o
+  .card--container
+    each recipe in recipes
+      .card--layout
+        .card--image-container
+          .card--fav-button
+            .fa.fa-star
+            .card--fav-count
+              = 20
+          a(href="/recipes/#{recipe.slug}")
+            if recipe.image!='' && recipe.image != undefined
+              img(style="background-image: url('#{recipe.image}')")
+            else
+              img(style="background-image: url('/static/default_recipe.jpg')")
+        .card--title
+          = recipe.name

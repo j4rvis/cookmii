@@ -8,6 +8,9 @@
     $(".header--burger").on('click', function() {
       return $('nav').slideToggle(300);
     });
+    $(".header--icon").on('click', function() {
+      return $('nav').slideToggle(300);
+    });
     $(".js--fieldset-delete").on('click', function() {
       return $(this).parents('.js--ingredient-form, .js--category-form').remove();
     });

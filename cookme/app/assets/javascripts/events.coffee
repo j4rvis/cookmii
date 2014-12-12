@@ -7,6 +7,9 @@ $ ->
   $(".header--burger").on 'click', ->
     $('nav').slideToggle(300)
 
+  $(".header--icon").on 'click', ->
+    $('nav').slideToggle(300)
+
   $(".js--fieldset-delete").on 'click', ->
     $(this).parents('.js--ingredient-form, .js--category-form').remove()
 

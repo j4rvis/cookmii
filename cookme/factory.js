@@ -8,12 +8,14 @@ var files = [
   "./app/factory/categories.txt",
   "./app/factory/ingredient_units.txt",
   "./app/factory/ingredients.txt",
-  "./app/factory/recipe_names.txt"
+  "./app/factory/recipe_names.txt",
+  "./app/factory/recipe_images.txt"
 ]
 var categories = [];
 var ingredient_units = [];
 var ingredients = [];
 var recipe_names = [];
+var recipe_images = [];
 
 mongoose.connect('mongodb://localhost:27017/cookmii_test');
 var numberOfRecipes = process.argv[3];
@@ -44,7 +46,7 @@ var populateRecipe = function(_user, doneCallback) {
   recipe.manual = output = loremIpsum({ count: Math.floor(Math.random() * 500) + 1 });
   recipe.isPublic = ['true','false'][Math.round(Math.random())];
   recipe.author = _user;
-  recipe.image = "http://lorempixel.com/640/480/food/";
+  recipe.image = recipe_images[randomElement(recipe_images.length)];
 
   for (var ing = 0; ing <= Math.floor(Math.random() * 20) + 1 ; ing++) {
     recipe.ingredients.push({
@@ -102,6 +104,12 @@ async.series([
   function(callback){
     fs.readFile(files[3], 'utf8', function (err, data){
       recipe_names = data.split(";\n");
+      callback();
+    });
+  },
+  function(callback){
+    fs.readFile(files[4], 'utf8', function (err, data){
+      recipe_images = data.split(";\n");
       callback();
     });
   },

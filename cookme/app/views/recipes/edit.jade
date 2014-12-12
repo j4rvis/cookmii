@@ -13,10 +13,16 @@ block content
           placeholder='Name'
           required=true
           value=recipe.name)
-      - if(recipe.image)
-        .recipe--image.recipe--image-edit
-          img(style="background-image: url('../#{recipe.image}')")
-      +input('Neues Bild')
+      +input('Image URL')
+        - if(recipe.image.indexOf('http') == 0)
+          - var image = recipe.image
+        input.form-control(
+          type='url'
+          name='image_url'
+          placeholder='Image'
+          required=false
+          value=image)
+      +input('Image')
         input.upload(
           type='file'
           name='image')

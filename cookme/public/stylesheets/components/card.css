@@ -1,34 +1,36 @@
 .card--container {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
 }
 .card--layout {
-  margin: 10px 10px 0 0;
-  width: 300px;
-  height: 250px;
   background: #fff;
-  box-shadow: 0 2px 0 #ccc;
-  border-radius: 10px;
-  padding: 10px;
+  margin-bottom: 25px;
+  width: 350px;
+  height: 250px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.25);
+  border-radius: 2px;
 }
 .card--image-container {
   position: relative;
   width: 100%;
   height: 150px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
   overflow: hidden;
   text-align: center;
 }
-.card--image-container img {
+.card--image-container a img {
   left: 0;
   position: absolute;
   z-index: 0;
   background-size: 100% auto;
-  background-position-y: center;
+  background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
   height: 100%;
-  box-shadow: inset 10px 10px 100px rgba(0,0,0,0.6);
+  transition: all 0.2s ease;
+}
+.card--image-container a img:hover {
+  transform: scale(1.2);
 }
 .card--image-container .card--fav-button {
   z-index: 1;
@@ -47,13 +49,24 @@
   right: 0;
   margin: 0 auto;
   color: #fff;
-  font-size: 3rem;
+  font-size: 1.5em;
+}
+.card--image-container .card--fav-button .fa-star:hover {
+  color: #ffa500;
+  cursor: pointer;
 }
 .card--image-container .card--fav-button .card--fav-count {
+  font-size: 1em;
+  margin-top: 10px;
   position: absolute;
   padding: 10px;
   bottom: 0;
   left: 0;
   right: 0;
   color: #fff;
+}
+.card--title {
+  color: #000;
+  font-size: 1em;
+  padding: 16px;
 }

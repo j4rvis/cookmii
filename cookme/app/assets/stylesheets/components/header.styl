@@ -1,80 +1,80 @@
 .header--logo
-  a
-    text-decoration none
-    color white
-  margin-top 30px
-  font-size 1.5em
-  @media desktop
-    margin 20px 20px
-    font-size 3em
-  flex 2
-.header--burger
-  color black
-  font-size 2em
-  padding 35px
-  float left
-  @media desktop
-    &.fa
-      display none
-nav
-  @media mobile
-    top 190px
+  height 100px
+  width 140px
+  margin 30px auto
+  position relative
+  text-decoration none
+  color white
+  .fa-spoon
+    font-size 4em
+    position absolute
     left 0
-    display none
-    position fixed
-    width 100%
-    height 150%
-    background $orange-dark
-    text-align center
-    z-index 1
-  @media desktop
-    flex 5
+  .first
+  .second
+    text-align left
+    padding-left 40px
+    font-size 2.25em
+    line-height 35px
+
+.header--navigation
+  flex 1
   ul
     list-style none
-    @media desktop
-      text-align center
+    text-align center
     padding 0
     li
+      text-align left
       padding 10px
-      @media desktop
-        padding-right 30px
-        height 40px
-        font-size 1.25em
-        line-height 20px
-        &:hover
-          background $orange-light
-          font-size 1.5em
-          cursor pointer
-      a
-        @media desktop
-          float right
-
+      padding-right 30px
+      height 40px
+      font-size 1em
+      line-height 20px
+      &:hover
+        background $green
+        font-size 1.2em
+        cursor pointer
 .header--user
-  @media mobile
-    display none
-  flex 2.5
+  height 250px
   display flex
   flex-flow column nowrap
   justify-content space-around
   .header--user-image
-    flex 2
     img
-      // border 1px solid black
-      box-shadow 0 10px 10px rgba(0,0,0,0.5)
+      // box-shadow 0 10px 10px rgba(0,0,0,0.5)
       border-radius 50px
       background-size auto 100%
       background-position-x center
       width 100px
       height 100px
-      // box-shadow inset 0
-      px 10px 10px rgba(0,0,0,.6)
+      border 1px solid #666
+      // box-shadow 0 4px 0 #555
   .header--user-actions
     display flex
     color white
     flex 0.5
-    flex-flow row nowrap
-    justify-content space-around
-    align-items flex-end
+    flex-flow column nowrap
+    justify-content flex-end
+    padding-bottom 30px
+    a
+      padding 10px
+      margin 0 auto 10px auto
+      width 80%
+      background $green
+      box-shadow 0 4px 0 $green-dark
+      border-radius 5px
+      &:hover
+        background $green-dark
 
-.header--impressum
-  flex 0.5
+
+  // margin auto 0
+  // font-size 2em
+  // @media desktop
+  //   margin 20px 20px
+// .header--burger
+//   color black
+//   font-size 2em
+//   padding 35px
+//   float left
+//   @media desktop
+//     &.fa
+//       display none

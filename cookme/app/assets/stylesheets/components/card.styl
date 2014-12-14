@@ -1,21 +1,57 @@
-.card--container
+.card--layout
   display flex
   flex-flow row wrap
   justify-content space-around
-.card--layout
+  align-content space-around
+  &.left
+    justify-content flex-start
+.card--main
+  align-self flex-start
+  margin 0 16px 16px 0
   background white
   margin-bottom 25px
-  width 350px
-  height 250px
-  // box-shadow 0 2px 0 #ccc
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);
+  box-shadow 0 2px 8px 0 rgba(0,0,0,.25)
   border-radius 2px
-.card--image-container
+  display inline-block
+  &.small
+    width 220px
+  &.medium
+    width 350px
+  &.large
+    width 600px
+
+.card--container
+  display flex
+  justify-content flex-start
+  align-content flex-start
+  flex-flow column wrap
+  &.first
+    order 1
+  &.second
+    order 2
+  &.third
+    order 3
+  &.fourth
+    order 4
+
+.card--title
+    padding 16px
+    font-size 1.5em
+.card--subtitle
+    padding 0 16px 16px 16px
+    font-size 1em
+.card--image
+  left 0
   position relative
   width 100%
-  height 150px
   overflow hidden
   text-align center
+  &.small
+    height 100px
+  &.medium
+    height 150px
+  &.large
+    height 250px
   a
     img
       left 0
@@ -29,36 +65,36 @@
       transition all 0.2s ease
       &:hover
         transform scale(1.2)
-  .card--fav-button
-    z-index 1
+.card--fav-button
+  z-index 1
+  position absolute
+  width 50px
+  height 70px
+  top 0
+  right 0
+  background $green
+  border-bottom-left-radius 10px
+  .fa-star
     position absolute
-    width 50px
-    height 70px
-    top 0
+    top 10px
+    left 0
     right 0
-    background $green
-    border-bottom-left-radius 10px
-    .fa-star
-      position absolute
-      top 10px
-      left 0
-      right 0
-      margin 0 auto
-      color white
-      font-size 1.5em
-      &:hover
-        color orange
-        cursor pointer
-    .card--fav-count
-      font-size 1em
-      margin-top 10px
-      position absolute
-      padding 10px
-      bottom 0
-      left 0
-      right 0
-      color white
-.card--title
+    margin 0 auto
+    color white
+    font-size 1.5em
+    &:hover
+      color orange
+      cursor pointer
+  .card--fav-count
+    font-size 1em
+    margin-top 10px
+    position absolute
+    padding 10px
+    bottom 0
+    left 0
+    right 0
+    color white
+.card--content
   color black
   font-size 1em
   padding 16px

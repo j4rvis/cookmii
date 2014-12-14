@@ -57,3 +57,25 @@ mixin category(name)
       button.js--fieldset-delete.close(type="button")
         span(aria-hidden="true") &times;
         span.sr-only Close
+
+mixin card(size)
+  .card--main(class=size)
+    -if (attributes.title)
+      .card--title= attributes.title
+    -if (attributes.subtitle)
+      .card--subtitle= attributes.subtitle
+    - if(attributes.image)
+      .card--image(class=size)
+        - if(attributes.slug!='') var link = '/recipes/' + attributes.slug; else var link = '#'
+        a(href=link)
+          if attributes.image!='' && attributes.image != undefined
+            img(style="background-image: url('#{attributes.image}')")
+          else
+            img(style="background-image: url('/static/default_recipe.jpg')")
+        .card--fav-button
+          .fa.fa-star
+          .card--fav-count
+            = 20
+    .card--content
+      if block
+        block

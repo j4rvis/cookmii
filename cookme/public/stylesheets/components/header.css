@@ -51,7 +51,6 @@
   background-position-x: center;
   width: 100px;
   height: 100px;
-  border: 1px solid #666;
 }
 .header--user .header--user-actions {
   display: flex;

@@ -1,69 +1,14 @@
-.recipe
-  display flex
-  flex-direction column
-  flex-wrap wrap
-  width 100%
-  @media desktop
-    flex-direction row
-.recipe--container-first
-  .recipe--title,
-  .recipe--categories,
-  .recipe--author
-    padding 0 10px
-    @media desktop
-      padding 0
-  @media desktop
-    min-width 400px
-    flex 1
-  order 1
-.recipe--container-second
-  @media desktop
-    padding 0
-    min-width 350px
-    max-height 400px
-    padding-left 20px
-    overflow-y auto
-    flex 1
-  order 2
-.recipe--container-third
-  margin-top 20px
-  padding 0 10px
-  order 3
-  @media desktop
-    padding 0
-    min-width 400px
+// Small Cards
+
 .recipe--categories
-  padding 0
   list-style none
+  padding 0
   display flex
   flex-flow row wrap
-  justify-content space-between
+  justify-content space-around
   li
-    font-style italic
-    font-size 0.75em
-    @media desktop
-      font-size 1.25em
-      margin-right 10px
-  li:last
-    margin-right 0
-.recipe--image
-  width 100%
-  height 600px
-  overflow hidden
-  text-align center
-  @media desktop
-    width 400px
-    height 250px
-  img
-    background-size 100% auto
-    background-position-y center
-    width 100%
-    height 100%
-    box-shadow inset 10px 10px 100px rgba(0,0,0,.6)
-.recipe--image-edit
-  margin 60px 0 0 0
-  padding 50px
-  @media desktop
-    margin 0 0 20px auto
-    text-align center
-    padding 0
+    color white
+    padding 5px
+    background $green
+    border-radius 5px
+    margin-top 10px

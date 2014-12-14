@@ -3,18 +3,9 @@ extends ../layout
 block content
   h1 #{profile.local.username}'s Profil
   p #{profile.local.email}
-  .card--container
+  .card--layout
     each recipe in recipes
-      .card--layout
-        .card--image-container
-          .card--fav-button
-            .fa.fa-star
-            .card--fav-count
-              = 20
-          a(href="/recipes/#{recipe.slug}")
-            if recipe.image!='' && recipe.image != undefined
-              img(style="background-image: url('#{recipe.image}')")
-            else
-              img(style="background-image: url('/static/default_recipe.jpg')")
-        .card--title
-          = recipe.name
+      +card('medium')(
+        slug=recipe.slug
+        image=recipe.image)
+        p=recipe.name

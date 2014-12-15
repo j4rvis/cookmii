@@ -26,7 +26,7 @@
       $('.js--categories-container').append($clone);
       return $('.js--categories-container').trigger('fieldset-added');
     });
-    return $('.js--recipe-delete').on('click', function(event) {
+    $('.js--recipe-delete').on('click', function(event) {
       var confirmation;
       event.preventDefault();
       confirmation = confirm("Möchtest du das Rezept wirklich löschen?");
@@ -43,6 +43,27 @@
       } else {
         return false;
       }
+    });
+    return $('.js--recipe--favorite').on('click', function(event) {
+      event.preventDefault();
+      return $.ajax({
+        type: 'POST',
+        url: '/recipes/' + $(this).data('recipe') + '/' + $(this).data('user')
+      }).done((function(_this) {
+        return function(response) {
+          if (response) {
+            $(event.currentTarget).removeClass('fa-star-o').addClass('fa-star').css('color', 'orange');
+          } else {
+            $(event.currentTarget).removeClass('fa-star').addClass('fa-star-o').css('color', 'white');
+          }
+          return $.ajax({
+            type: 'GET',
+            url: '/recipes/' + $(_this).data('recipe') + '/favcount'
+          }).done(function(response2) {
+            return console.log(response2);
+          });
+        };
+      })(this));
     });
   });
 

@@ -4,5 +4,6 @@ module.exports = function(app){
   require('./create')(app);
   require('./show')(app);
   require('./edit')(app);
+  require('./fav')(app);
   require('./delete')(app);
 }

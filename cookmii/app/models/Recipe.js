@@ -30,5 +30,16 @@ RecipeSchema = new Schema({
     default: Date.now
   }
 });
+RecipeSchema.set('toObject', {virtuals: true });
+
+RecipeSchema.methods.isFavorite = function(user){
+  this.model('Recipe').find({slug:this.slug, 'favorites.user': user}, function(err, result){
+    console.log(result);
+    if(result)
+      return true;
+    else
+      return false;
+  });
+}
 
 module.exports = mongoose.model('Recipe', RecipeSchema);

@@ -36,3 +36,21 @@ $ ->
         window.location = '/recipes'
     else
       false
+
+  $('.js--recipe--favorite').on 'click', (event) ->
+    event.preventDefault()
+    $.ajax
+      type: 'POST'
+      url: '/recipes/' + $(this).data('recipe') + '/' + $(this).data('user')
+    .done (response) =>
+      if(response)
+        $(event.currentTarget).removeClass('fa-star-o').addClass('fa-star').css('color', 'orange')
+      else
+        $(event.currentTarget).removeClass('fa-star').addClass('fa-star-o').css('color', 'white')
+      $.ajax
+        type: 'GET'
+        url: '/recipes/' + $(this).data('recipe') + '/favcount'
+      .done (response2) =>
+        console.log(response2)
+
+

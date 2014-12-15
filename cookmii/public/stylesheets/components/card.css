@@ -91,6 +91,7 @@
   background: $green;
   border-bottom-left-radius: 10px;
 }
+.card--fav-button .fa-star-o,
 .card--fav-button .fa-star {
   position: absolute;
   top: 10px;
@@ -100,6 +101,7 @@
   color: #fff;
   font-size: 1.5em;
 }
+.card--fav-button .fa-star-o:hover,
 .card--fav-button .fa-star:hover {
   color: #ffa500;
   cursor: pointer;

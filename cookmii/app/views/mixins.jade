@@ -73,7 +73,8 @@ mixin card(size)
           else
             img(style="background-image: url('/static/default_recipe.jpg')")
         .card--fav-button
-          .fa.fa-star
+          -if(user)
+            a.js--recipe--favorite.fa.fa-star-o(data-user = user.local.username, data-recipe = attributes.slug)
           .card--fav-count
             = 20
     .card--content

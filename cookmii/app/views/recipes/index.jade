@@ -3,7 +3,5 @@ extends ../layout
 block content
   .card--layout
     each recipe in recipes
-      +card('medium')(
-        slug=recipe.slug
-        image=recipe.image)
+      +card('medium',recipe)
         p=recipe.name

@@ -8,11 +8,8 @@ var userSchema = mongoose.Schema({
         password     : String,
         username     : String,
         realname     : String,
-        profile_image: String,
-        profile_page_image : String,
-        facebook_profile: String,
-        google_profile: String,
-        twitter_profile: String
+        favorites    : String,
+        profile_image: String
     },
     facebook         : {
         id           : String,

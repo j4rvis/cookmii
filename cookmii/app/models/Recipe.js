@@ -32,14 +32,16 @@ RecipeSchema = new Schema({
 });
 RecipeSchema.set('toObject', {virtuals: true });
 
-RecipeSchema.methods.isFavorite = function(user){
+RecipeSchema.methods.isFavorite = function(user, cb){
   this.model('Recipe').find({slug:this.slug, 'favorites.user': user}, function(err, result){
-    console.log(result);
-    if(result)
-      return true;
+    if(result.length > 0)
+      return cb(true);
     else
-      return false;
+      return cb(false);
   });
 }
+RecipeSchema.virtual('favCount').get(function(){
+  return this.favorites.length;
+});
 
 module.exports = mongoose.model('Recipe', RecipeSchema);

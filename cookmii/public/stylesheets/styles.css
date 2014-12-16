@@ -277,8 +277,7 @@ a.link--green:hover {
   background: #43a047;
   border-bottom-left-radius: 10px;
 }
-.card--fav-button .fa-star-o,
-.card--fav-button .fa-star {
+.card--fav-button .fa {
   position: absolute;
   top: 10px;
   left: 0;
@@ -287,8 +286,10 @@ a.link--green:hover {
   color: #fff;
   font-size: 1.5em;
 }
-.card--fav-button .fa-star-o:hover,
-.card--fav-button .fa-star:hover {
+.card--fav-button .fa.fa-star {
+  color: #ffb300;
+}
+.card--fav-button .fa:hover {
   color: #ffa500;
   cursor: pointer;
 }

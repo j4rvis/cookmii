@@ -22,5 +22,16 @@ module.exports = function (app) {
         });
       });
     });
-
+  app.route('/favorites')
+    .get(Recipe.isLoggedIn, function (req, res){
+      Recipe.model.find( {
+        'favorites.user': res.locals.user.local.username
+      }, function (err, recipes){
+        if(err)
+          res.send(err);
+        res.render('recipes/index', {
+          recipes: recipes
+        });
+      });
+    });
 }

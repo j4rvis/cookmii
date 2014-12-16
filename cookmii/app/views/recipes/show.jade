@@ -3,10 +3,7 @@ extends ../layout
 block content
   .card--layout.left
     .card--container.first
-      +card('large')(
-        title=recipe.name
-        subtitle="by "+recipe.author,
-        image=recipe.image)
+      +card('large',recipe)
         -if(recipe.categories)
           ul.recipe--categories
             each category in recipe.categories
@@ -32,31 +29,3 @@ block content
         -if(recipe.ingredients)
           each ingredient in recipe.ingredients
             p #{ingredient.quantity} #{ingredient.unit} #{ingredient.name}
-
-      //- .recipe--title
-      //-   h1
-      //-     = recipe.name
-      //-     -if(user)
-      //-       a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
-      //-         .fa.fa-pencil  Bearbeiten
-      //- .recipe--author
-      //-   span by #{recipe.author}
-      //- ul.recipe--categories
-      //-   -if(recipe.categories)
-      //-     each category in recipe.categories
-      //-       li= category.name
-      //- .recipe--image
-      //-   if recipe.image!='' && recipe.image != undefined
-      //-     img(style="background-image: url('#{recipe.image}')")
-      //-   else
-      //-     img(style="background-image: url('/static/default_recipe.jpg')")
-    //- .recipe--container-second
-    //-   .recipe--ingredients
-    //-     h2 Ingredients
-    //-     -if(recipe.ingredients)
-    //-       each ingredient in recipe.ingredients
-    //-         p #{ingredient.quantity} #{ingredient.unit} #{ingredient.name}
-    //- .recipe--container-third
-    //-   .recipe--manual
-    //-     h2 Manual
-    //-     p= recipe.manual

@@ -3,9 +3,8 @@ extends ../layout
 block content
   h1 #{profile.local.username}'s Profil
   p #{profile.local.email}
+  p #{profile.local.favorites}
   .card--layout
     each recipe in recipes
-      +card('medium')(
-        slug=recipe.slug
-        image=recipe.image)
+      +card('medium',recipe)
         p=recipe.name

@@ -58,25 +58,37 @@ mixin category(name)
         span(aria-hidden="true") &times;
         span.sr-only Close
 
-mixin card(size)
+mixin card(size, recipe)
   .card--main(class=size)
-    -if (attributes.title)
-      .card--title= attributes.title
-    -if (attributes.subtitle)
-      .card--subtitle= attributes.subtitle
-    - if(attributes.image)
-      .card--image(class=size)
-        - if(attributes.slug!='') var link = '/recipes/' + attributes.slug; else var link = '#'
-        a(href=link)
-          if attributes.image!='' && attributes.image != undefined
-            img(style="background-image: url('#{attributes.image}')")
-          else
-            img(style="background-image: url('/static/default_recipe.jpg')")
-        .card--fav-button
-          -if(user)
-            a.js--recipe--favorite.fa.fa-star-o(data-user = user.local.username, data-recipe = attributes.slug)
-          .card--fav-count
-            = 20
+    -if (attributes.title || attributes.subtitle)
+      -if (attributes.title)
+        .card--title= attributes.title
+      -if (attributes.subtitle)
+        .card--subtitle= attributes.subtitle
+    -if(recipe)
+      -if(size!='medium')
+        .card--title= recipe.name
+        .card--subtitle= "by "+ recipe.author
+      - if(recipe.image)
+        .card--image(class=size)
+          - if(recipe.slug!='') var link = '/recipes/' + recipe.slug; else var link = '#'
+          a(href=link)
+            if recipe.image!='' && recipe.image != undefined
+              img(style="background-image: url('#{recipe.image}')")
+            else
+              img(style="background-image: url('/static/default_recipe.jpg')")
+          .card--fav-button
+            -if(recipe.isFav) var star = 'fa-star'
+            -else var star = 'fa-star-o'
+            -if(user)
+              a.js--recipe--favorite.fa(
+                data-user = user.local.username,
+                data-recipe = recipe.slug,
+                class=star)
+            -else
+              a.fa.fa-star-o(href="/login")
+            .card--fav-count
+              = recipe.favCount
     .card--content
       if block
         block

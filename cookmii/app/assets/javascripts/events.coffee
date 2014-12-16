@@ -43,14 +43,20 @@ $ ->
       type: 'POST'
       url: '/recipes/' + $(this).data('recipe') + '/' + $(this).data('user')
     .done (response) =>
-      if(response)
-        $(event.currentTarget).removeClass('fa-star-o').addClass('fa-star').css('color', 'orange')
+      if(response == 'true')
+        $(event.currentTarget).removeClass('fa-star').addClass('fa-star-o')
       else
-        $(event.currentTarget).removeClass('fa-star').addClass('fa-star-o').css('color', 'white')
+        $(event.currentTarget).removeClass('fa-star-o').addClass('fa-star')
       $.ajax
         type: 'GET'
         url: '/recipes/' + $(this).data('recipe') + '/favcount'
-      .done (response2) =>
-        console.log(response2)
+      .done (favCount) ->
+        console.log(favCount);
+        $(event.currentTarget).next().text(favCount)
 
+  $('.js--recipe--favorite').each (i,val) ->
+    path = '/recipes/' + $(val).data('recipe') + '/' + $(val).data('user')
+    $.get path, (data) ->
+      if(data)
+        $(val).removeClass('fa-star-o').addClass('fa-star')
 

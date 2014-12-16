@@ -5,13 +5,24 @@ module.exports = function(app, passport) {
   var passport = app.locals.passport;
   app.route('/:user/profile')
     .get(function (req, res, next) {
-      User.findOne({'local.username': req.params.user}, function(err, user){
-        Recipe.model.find({author: user.local.username, isPublic: true}, function(err, recipes){
-          res.render('users/profile', {
-            profile: user,
-            recipes: recipes
+      if(res.locals.user.local.username===req.params.user){
+        User.findOne({'local.username': req.params.user}, function(err, user){
+          Recipe.model.find({author: user.local.username}, function(err, recipes){
+            res.render('users/profile', {
+              profile: user,
+              recipes: recipes
+            });
           });
         });
-      });
+      }else{
+        User.findOne({'local.username': req.params.user}, function(err, user){
+          Recipe.model.find({author: user.local.username, isPublic: true}, function(err, recipes){
+            res.render('users/profile', {
+              profile: user,
+              recipes: recipes
+            });
+          });
+        });
+      }
     });
 }

@@ -44,26 +44,36 @@
         return false;
       }
     });
-    return $('.js--recipe--favorite').on('click', function(event) {
+    $('.js--recipe--favorite').on('click', function(event) {
       event.preventDefault();
       return $.ajax({
         type: 'POST',
         url: '/recipes/' + $(this).data('recipe') + '/' + $(this).data('user')
       }).done((function(_this) {
         return function(response) {
-          if (response) {
-            $(event.currentTarget).removeClass('fa-star-o').addClass('fa-star').css('color', 'orange');
+          if (response === 'true') {
+            $(event.currentTarget).removeClass('fa-star').addClass('fa-star-o');
           } else {
-            $(event.currentTarget).removeClass('fa-star').addClass('fa-star-o').css('color', 'white');
+            $(event.currentTarget).removeClass('fa-star-o').addClass('fa-star');
           }
           return $.ajax({
             type: 'GET',
             url: '/recipes/' + $(_this).data('recipe') + '/favcount'
-          }).done(function(response2) {
-            return console.log(response2);
+          }).done(function(favCount) {
+            console.log(favCount);
+            return $(event.currentTarget).next().text(favCount);
           });
         };
       })(this));
+    });
+    return $('.js--recipe--favorite').each(function(i, val) {
+      var path;
+      path = '/recipes/' + $(val).data('recipe') + '/' + $(val).data('user');
+      return $.get(path, function(data) {
+        if (data) {
+          return $(val).removeClass('fa-star-o').addClass('fa-star');
+        }
+      });
     });
   });
 

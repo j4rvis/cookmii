@@ -1,6 +1,15 @@
 extends layout
 
 block content
-  +card('medium')(title='Most used ingredients')
-    each ingredient in ingredients
-      p #{ingredient._id} #{ingredient.count}
+  .card--layout
+    +card('medium')(title='Most used ingredients')
+      each ingredient in ingredients
+        p #{ingredient._id} #{ingredient.count}
+
+    +card('medium')(title='Best recipes')
+      each bestRecipe in bestRecipes
+        +card('medium inline', bestRecipe)(subtitle=bestRecipe.name)
+
+    +card('medium')(title='Most used categories')
+      each category in categories
+        p #{category._id} #{category.count}

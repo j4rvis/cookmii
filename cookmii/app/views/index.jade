@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  +card('medium')(title='Most used ingredients')
+    each ingredient in ingredients
+      p #{ingredient._id} #{ingredient.count}

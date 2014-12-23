@@ -6,8 +6,11 @@ module.exports = function (app) {
       Recipe.model.findOne({"slug": req.params.slug}, function (err, recipe){
         if(err)
           res.send(err);
-        res.render('recipes/show', {
-          recipe: recipe
+        recipe.bestFromAuthor(function(bestFromAuthor){
+          res.render('recipes/show', {
+            recipe: recipe,
+            bestFromAuthor: bestFromAuthor
+          });
         });
       });
     });

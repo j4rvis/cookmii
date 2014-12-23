@@ -66,7 +66,7 @@ mixin card(size, recipe)
       -if (attributes.subtitle)
         .card--subtitle= attributes.subtitle
     -if(recipe)
-      -if(size!='medium')
+      -if(size.indexOf('medium') < 0 )
         .card--title= recipe.name
         .card--subtitle= "by "+ recipe.author
       - if(recipe.image)
@@ -89,6 +89,6 @@ mixin card(size, recipe)
               a.fa.fa-star-o(href="/login")
             .card--fav-count
               = recipe.favCount
-    .card--content
-      if block
+    if block
+      .card--content
         block

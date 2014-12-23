@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  .card--layout.left
+  .card--layout
     .card--container.first
       +card('large',recipe)
         -if(recipe.categories)
@@ -12,20 +12,22 @@ block content
         p= recipe.manual
 
     .card--container.second
-      +card('medium')(title="Actions")
-        -if(user)
+      -if(user.local.username==recipe.author)
+        +card('medium')(title="Actions")
           a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
-            .fa.fa-pencil  Bearbeiten
+            .fa.fa-pencil  Edit
+          a(data-path="#{recipe.slug}").js--recipe-delete.btn.btn-danger.btn-sm
+            .fa.fa-trash  Delete
       +card('medium')(title="Ingredients")
         -if(recipe.ingredients)
           each ingredient in recipe.ingredients
             p #{ingredient.quantity} #{ingredient.unit} #{ingredient.name}
-    .card--container.third
-      +card('medium')(title="Similar Recipes")
-        -if(recipe.ingredients)
-          each ingredient in recipe.ingredients
-            p #{ingredient.quantity} #{ingredient.unit} #{ingredient.name}
       +card('medium')(title="Best recipes by the author")
-        -if(recipe.ingredients)
-          each ingredient in recipe.ingredients
-            p #{ingredient.quantity} #{ingredient.unit} #{ingredient.name}
+        -if(bestFromAuthor)
+          each bf in bestFromAuthor
+            +card('medium inline', bf)(subtitle=bf.name)
+    .card--container.third
+      //- +card('medium')(title="Similar Recipes")
+      //-   -if(recipe.ingredients)
+      //-     each ingredient in recipe.ingredients
+      //-       p #{ingredient.quantity} #{ingredient.unit} #{ingredient.name}

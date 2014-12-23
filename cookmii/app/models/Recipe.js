@@ -32,14 +32,24 @@ RecipeSchema = new Schema({
 });
 RecipeSchema.set('toObject', {virtuals: true });
 
-RecipeSchema.methods.isFavorite = function(user, cb){
+RecipeSchema.methods.isFavorite = function(user, callback){
   this.model('Recipe').find({slug:this.slug, 'favorites.user': user}, function(err, result){
     if(result.length > 0)
-      return cb(true);
+      return callback(true);
     else
-      return cb(false);
+      return callback(false);
   });
 }
+
+RecipeSchema.methods.bestFromAuthor = function(callback){
+  this.model('Recipe').find({
+    author:this.author,
+    isPublic:true
+  }).sort({favCount:-1}).limit(5).exec(function(err, result){
+    return callback(result);
+  });
+}
+
 RecipeSchema.virtual('favCount').get(function(){
   return this.favorites.length;
 });

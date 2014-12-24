@@ -1,6 +1,11 @@
 extends layout
 
 block content
+  .search--container
+    form(action="/search" method="POST")
+      input(type="text", name="search",
+        placeholder="Suche nach Rezeptname, Kategorie oder Zutat")
+
   .card--layout
     +card('medium')(title='Most used ingredients')
       each ingredient in ingredients

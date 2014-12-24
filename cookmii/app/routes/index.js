@@ -1,6 +1,7 @@
 module.exports = function(app){
   require('./users')(app);
   require('./recipes')(app);
+  require('./search')(app);
   var async = require("async");
 
   var Recipe = app.locals.Recipe;

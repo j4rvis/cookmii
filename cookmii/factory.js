@@ -17,7 +17,8 @@ var ingredients = [];
 var recipe_names = [];
 var recipe_images = [];
 
-mongoose.connect('mongodb://localhost:27017/cookmii_test');
+// mongoose.connect('mongodb://localhost:27017/cookmii_test');
+mongoose.connect('mongodb://j4rvis:dbtest@ds029911.mongolab.com:29911/production');
 var numberOfRecipes = process.argv[3];
 var validUsers = [];
 

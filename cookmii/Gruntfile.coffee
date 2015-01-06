@@ -57,7 +57,7 @@ module.exports = (grunt) ->
       dev:
         options:
           script: "./bin/www"
-          opts:  ["node_modules/coffee-script/bin/coffee"]
+          # opts:  ["node_modules/coffee-script/bin/coffee"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"

@@ -12,7 +12,7 @@ block content
         p= recipe.manual
 
     .card--container.second
-      -if(user.local.username==recipe.author)
+      -if(user && user.local.username==recipe.author)
         +card('medium')(title="Actions")
           a(href="#{recipe.slug}/edit").btn.btn-success.btn-sm
             .fa.fa-pencil  Edit

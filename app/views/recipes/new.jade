@@ -4,7 +4,7 @@ block content
   .hidden
     +ingredient
     +category
-  form.form-horizontal(method="POST",enctype="multipart/form-data")
+  form.form-horizontal(method="POST")
     .col-md-6
       +input('Name')
         input.form-control(
@@ -47,7 +47,6 @@ block content
     .col-md-6
       +textarea('Anleitung', 'manual')
     .col-md-12
-      input(type="hidden" name="_method" value="put")
       .pull-right
         button.btn.btn-lg.btn-default(type="reset") Abbrechen
         button.btn.btn-lg.btn-success(type="submit") Erstellen

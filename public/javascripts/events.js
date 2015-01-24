@@ -60,7 +60,6 @@
             type: 'GET',
             url: '/recipes/' + $(_this).data('recipe') + '/favcount'
           }).done(function(favCount) {
-            console.log(favCount);
             return $(event.currentTarget).next().text(favCount);
           });
         };
@@ -68,7 +67,7 @@
     });
     return $('.js--recipe--favorite').each(function(i, val) {
       var path;
-      path = '/recipes/' + $(val).data('recipe') + '/' + $(val).data('user');
+      path = "/recipes/" + ($(val).data('recipe')) + "/" + ($(val).data('user'));
       return $.get(path, function(data) {
         if (data) {
           return $(val).removeClass('fa-star-o').addClass('fa-star');

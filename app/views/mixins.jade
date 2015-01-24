@@ -82,7 +82,7 @@ mixin card(size, recipe)
             -else var star = 'fa-star-o'
             -if(user)
               a.js--recipe--favorite.fa(
-                data-user = user.local.username,
+                data-user = user.username,
                 data-recipe = recipe.slug,
                 class=star)
             -else

@@ -7,22 +7,25 @@ block content
     .login-field
       h1
         span.fa.fa-sign-in
-        = 'Login'
+        = 'Register'
       hr
       - if(message.length > 0)
         .alert.alert-danger= message
-      form(method="post")
+      form(action="/register" method="post")
         .form-group
           label= 'Username'
           input.form-control(type="text", name="username")
         .form-group
+          label= 'Email'
+          input.form-control(type="text", name="email")
+        .form-group
           label= 'Password'
           input.form-control(type="password", name="password")
-        button.btn.btn-warning-btn-lg(type="submit")= 'Login'
+        button.btn.btn-secondary(type="submit")= 'Register'
       hr
 
-      p='Need an account? '
-        a.link--green(href="/register")= 'Register'
+      p='Already have an account? '
+        a.link--green(href="/login")= 'Login'
 
       p='Or go '
         a.link--green(href="/")= 'home.'

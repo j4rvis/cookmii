@@ -1,0 +1,9 @@
+gr
+TL
+EL
+Stk
+Prise
+Bund
+mg
+kg
+Dose

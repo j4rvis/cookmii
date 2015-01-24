@@ -9,11 +9,11 @@ header
     ul
       li
         a(href="/recipes/") Alle Rezepte
-      li
-        a(href="/users") Alle Nutzer
       -if(user)
         li
-          a(href="/myrecipes/") Eigene Rezepte
+          a(href="/users") Alle Nutzer
+        li
+          a(href="/recipes/own") Eigene Rezepte
         li
           a(href="/favorites/") Favoriten
         li
@@ -24,12 +24,12 @@ header
   .header--user
     .header--user-image
       - if(user)
-        a(href="/#{user.local.username}/profile")
+        a(href="/users/#{user.username}")
           img(style="background-image:url(https://farm4.staticflickr.com/3847/15207650967_c26783888c_o.jpg);")
     .header--user-actions
       -if(user)
-        a(href="/#{user.local.username}/profile") Profil
+        a(href="/users/#{user.username}") Profil
         a(href="/logout") Logout
       -else
-        a(href="/signup") Signup
+        a(href="/register") Register
         a(href="/login") Login

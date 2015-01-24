@@ -51,11 +51,10 @@ $ ->
         type: 'GET'
         url: '/recipes/' + $(this).data('recipe') + '/favcount'
       .done (favCount) ->
-        console.log(favCount);
         $(event.currentTarget).next().text(favCount)
 
   $('.js--recipe--favorite').each (i,val) ->
-    path = '/recipes/' + $(val).data('recipe') + '/' + $(val).data('user')
+    path = "/recipes/#{$(val).data('recipe')}/#{$(val).data('user')}"
     $.get path, (data) ->
       if(data)
         $(val).removeClass('fa-star-o').addClass('fa-star')

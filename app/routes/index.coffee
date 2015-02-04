@@ -54,12 +54,12 @@ module.exports = (app) =>
   #
   #   Party
   #
-  app.route('/parties')                     .get                      PartyCtrl.render_all
-  app.route('/parties/new')                 .get                      PartyCtrl.render_create
-  app.route('/parties/new')                 .post                     PartyCtrl.create
-  app.route('/parties/:party')              .get                      PartyCtrl.render
+  app.route('/parties')                     .get Auth.isLoggedIn,                      PartyCtrl.render_all
+  app.route('/parties/new')                 .get Auth.isLoggedIn,                      PartyCtrl.render_create
+  app.route('/parties/new')                 .post Auth.isLoggedIn,                     PartyCtrl.create
+  app.route('/parties/:party')              .get Auth.isLoggedIn,                      PartyCtrl.render
   app.route('/parties/:party/edit')         .get                      PartyCtrl.render_update
   app.route('/parties/:party/edit')         .post                     PartyCtrl.update
-  app.route('/parties/:party')              .post                     PartyCtrl.delete
+  app.route('/parties/:party')              .post Auth.isOwner,                     PartyCtrl.delete
   app.route('/parties/:party/:recipe')      .post                     PartyCtrl.add_recipe
   app.route('/parties/:party/:recipe/rm')   .post                     PartyCtrl.remove_recipe

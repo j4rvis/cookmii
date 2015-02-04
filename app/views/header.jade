@@ -19,15 +19,13 @@ header
         li
           a(href="/recipes/new") Neues Rezept
         li
-          a(href="/parties/new").js--party-new Neue Party
+          a(href="/parties") Parties
 
   //- .header--icon
   //-   .fa.fa-user
   .header--user
-    //- .header--user-image
-    //-   - if(user)
-    //-     a(href="/users/#{user.username}")
-    //-       img(style="background-image:url(https://farm4.staticflickr.com/3847/15207650967_c26783888c_o.jpg);")
+    -if(user)
+      h2 #{user.username}
     .header--user-actions
       -if(user)
         a(href="/users/#{user.username}") Profil

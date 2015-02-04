@@ -14,7 +14,7 @@ class PartyCtrl extends require './BaseCtrl'
       slug: req.params.party
       $or: [
         {_owner: res.locals.user._id}
-        {'attendees._user._id': res.locals.user._id}
+        {'attendees._user': res.locals.user._id}
       ]
     .populate '_owner attendees._user', 'username'
     .exec (err, result) ->
@@ -24,7 +24,7 @@ class PartyCtrl extends require './BaseCtrl'
     Party.find
       $or: [
         {_owner: res.locals.user._id}
-        {'attendees._user._id': res.locals.user._id}
+        {'attendees._user': res.locals.user._id}
       ]
     .populate '_owner attendees._user', 'username'
     .exec (err, results) ->
@@ -51,14 +51,9 @@ class PartyCtrl extends require './BaseCtrl'
         $in:
           attendees
     .exec (err, users) ->
-      console.log users
-      users = _.pluck(users, '_id')
-      console.log _.isArray users
-      if _.isArray users
-        _.each users, (id)->
-          party.attendees.push {_user: id}
+      _.each _.pluck(users, '_id'), (id)->
+        party.attendees.push {_user: id}
       party.save (err, result) ->
-        console.log result
         res.redirect "/parties/#{result.slug}"
 
   update: (req, res) =>

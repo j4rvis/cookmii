@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+  each party in parties
+    p #{party.name} by #{party._owner.username} with
+    each attendee in party.attendees
+      -if(attendee._user)
+        = attendee._user.username

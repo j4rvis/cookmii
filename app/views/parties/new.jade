@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+  h2 New Party
+  form.form-horizontal.party--form(method="POST")
+    .col-md-6
+      .form-group
+        label.control-label Name
+        input.form-control(
+          type='text'
+          placeholder=Name
+          name='name'
+          required=true)
+      .form-group
+        label.control-label Place
+        input.form-control(
+          type='text'
+          placeholder=Place
+          name='place'
+          required=false)
+      .form-group
+        label.control-label Date
+        -var d = new Date()
+        -var today = d.toISOString().slice(0,10)
+        input.form-control(
+          type='date'
+          name='date'
+          value=today
+          required=true)
+      .form-group
+        label.control-label Time
+        input.form-control(
+          type='Time'
+          name='time'
+          value="18:00"
+          required=true)
+    .col-md-6
+      .form-group
+        label.control-label Beschreibung
+        textarea.form-control(
+          placeholder=Beschreibung
+          name='description')
+      .form-group
+        label.control-label Teilnehmer
+        input.form-control.js--search-user(
+          type='text'
+          placeholder=User)
+        .search--results
+    .col-md-12
+      .form--actions.pull-right
+        button.btn.btn-lg.btn-default(type="reset") Abbrechen
+        button.btn.btn-lg.btn-success(type="submit") Erstellen

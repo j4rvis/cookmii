@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+  p #{party.name} by #{party._owner.username}
+  p #{party.description}
+  h2 Attendees
+  each attendee in party.attendees
+    p #{attendee._user.username}

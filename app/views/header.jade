@@ -18,14 +18,16 @@ header
           a(href="/favorites/") Favoriten
         li
           a(href="/recipes/new") Neues Rezept
+        li
+          a(href="/parties/new").js--party-new Neue Party
 
   //- .header--icon
   //-   .fa.fa-user
   .header--user
-    .header--user-image
-      - if(user)
-        a(href="/users/#{user.username}")
-          img(style="background-image:url(https://farm4.staticflickr.com/3847/15207650967_c26783888c_o.jpg);")
+    //- .header--user-image
+    //-   - if(user)
+    //-     a(href="/users/#{user.username}")
+    //-       img(style="background-image:url(https://farm4.staticflickr.com/3847/15207650967_c26783888c_o.jpg);")
     .header--user-actions
       -if(user)
         a(href="/users/#{user.username}") Profil

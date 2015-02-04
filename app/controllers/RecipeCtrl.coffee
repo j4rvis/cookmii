@@ -11,8 +11,8 @@ class RecipeCtrl extends require './BaseCtrl'
     super text
 
   create: (req,res) =>
-    ingredients = req.body.ingredients;
-    categories = req.body.categories;
+    ingredients = req.body.ingredients
+    categories = req.body.categories
     recipe = new Recipe
       name: req.body.name
       slug: @slugify_unique(req.body.name)

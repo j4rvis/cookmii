@@ -1,5 +1,4 @@
 $ ->
-
   $('.js--ingredients-container, .js--categories-container').on 'fieldset-added', ->
     $(".js--fieldset-delete").on 'click', ->
       $(this).parents('.js--ingredient-form, .js--category-form').remove()

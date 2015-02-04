@@ -1,0 +1,29 @@
+.party--container
+  .background
+  .party--close.fa.fa-times
+  .party--layer
+    .party--header New Party
+    .party--content
+      form.form-horizontal(method="POST")
+        .form-group
+          label.control-label Name
+          input.form-control(
+            type='text'
+            placeholder=Name
+            name=name
+            required=true)
+        .form-group.right
+          label.control-label Teilnehmer
+          input.form-control.js--search-user(
+            type='text'
+            placeholder=User
+            name=user)
+          .search--results
+        .form-group
+          label.control-label Beschreibung
+          textarea.form-control(
+            placeholder=Beschreibung
+            name=description)
+        .pull-right
+          button.btn.btn-lg.btn-default(type="reset") Abbrechen
+          button.btn.btn-lg.btn-success(type="submit") Erstellen

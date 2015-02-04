@@ -12,9 +12,12 @@ class PartyCtrl extends require './BaseCtrl'
   render: (req, res) =>
     Party.findOne
       slug: req.params.party
+      $or: [
+        {_owner: res.locals.user._id}
+        {'attendees._user._id': res.locals.user._id}
+      ]
     .populate '_owner attendees._user', 'username'
     .exec (err, result) ->
-      console.log result, result.attendees
       res.render 'parties/show',
         party: result
   render_all: (req, res) =>
@@ -41,16 +44,19 @@ class PartyCtrl extends require './BaseCtrl'
       date: req.body.date
       time: req.body.time
 
+    attendees = req.body.attendees
+    attendees = if _.isArray attendees then attendees else [attendees]
     User.find
       username:
         $in:
-          req.body.attendees
-
+          attendees
     .exec (err, users) ->
-
-      _.each _.pluck(users, '_id'), (id)->
-        party.attendees.push {_user: id}
-      # party.attendees._user = _.pluck(users, '_id')
+      console.log users
+      users = _.pluck(users, '_id')
+      console.log _.isArray users
+      if _.isArray users
+        _.each users, (id)->
+          party.attendees.push {_user: id}
       party.save (err, result) ->
         console.log result
         res.redirect "/parties/#{result.slug}"

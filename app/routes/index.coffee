@@ -35,7 +35,6 @@ module.exports = (app) =>
   app.route('/logout')                      .get Auth.isLoggedIn,     UserCtrl.logout
   app.route('/login')                       .post UserCtrl.login,     UserCtrl.redirect_profile
   app.route('/register')                    .post UserCtrl.register,  UserCtrl.redirect_profile
-  app.route('/users/search')                .post Auth.isLoggedIn,    UserCtrl.search
 
   #
   #   Favorite
@@ -50,16 +49,18 @@ module.exports = (app) =>
   #
   app.route('/')                            .get                      HomeCtrl.render
   app.route('/search')                      .post                     HomeCtrl.search
+  app.route('/search/users')                .post Auth.isLoggedIn,    UserCtrl.search
+  app.route('/search/recipes')              .post Auth.isLoggedIn,    RecipeCtrl.search
 
   #
   #   Party
   #
-  app.route('/parties')                     .get Auth.isLoggedIn,                      PartyCtrl.render_all
-  app.route('/parties/new')                 .get Auth.isLoggedIn,                      PartyCtrl.render_create
-  app.route('/parties/new')                 .post Auth.isLoggedIn,                     PartyCtrl.create
-  app.route('/parties/:party')              .get Auth.isLoggedIn,                      PartyCtrl.render
-  app.route('/parties/:party/edit')         .get                      PartyCtrl.render_update
-  app.route('/parties/:party/edit')         .post                     PartyCtrl.update
-  app.route('/parties/:party')              .post Auth.isOwner,                     PartyCtrl.delete
-  app.route('/parties/:party/:recipe')      .post                     PartyCtrl.add_recipe
-  app.route('/parties/:party/:recipe/rm')   .post                     PartyCtrl.remove_recipe
+  app.route('/parties')                     .get Auth.isLoggedIn,     PartyCtrl.render_all
+  app.route('/parties/new')                 .get Auth.isLoggedIn,     PartyCtrl.render_create
+  app.route('/parties/new')                 .post Auth.isLoggedIn,    PartyCtrl.create
+  app.route('/parties/:party')              .get Auth.isLoggedIn,     PartyCtrl.render
+  app.route('/parties/:party/edit')         .get Auth.isOwner,        PartyCtrl.render_update
+  app.route('/parties/:party/edit')         .post Auth.isOwner,       PartyCtrl.update
+  app.route('/parties/:party')              .delete Auth.isOwner,     PartyCtrl.delete
+  app.route('/parties/:party/addrecipe')    .post Auth.isLoggedIn,    PartyCtrl.add_recipe
+  app.route('/parties/:party/rmrecipe')     .post Auth.isLoggedIn,    PartyCtrl.remove_recipe

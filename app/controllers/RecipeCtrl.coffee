@@ -111,4 +111,14 @@ class RecipeCtrl extends require './BaseCtrl'
       res.render 'recipes/index',
         recipes: recipes
 
+  search: (req, res) =>
+    Recipe.find {'name': new RegExp(req.body.search, "i")}, 'name slug'
+    .exec (err, result) ->
+      excluded = []
+      unless _.isEmpty req.body.excluded
+        excluded.push req.body.excluded
+      result = _.filter result, (obj) =>
+        return !_.contains(_.flatten(excluded), obj.name)
+      if err then res.send(err) else res.send(result)
+
 module.exports = RecipeCtrl

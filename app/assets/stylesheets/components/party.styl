@@ -1,21 +1,23 @@
 
+.search-user-results
+.search-recipe-results
+  display inline-block
+  display none
+  position absolute
+  z-index 10
+  width 95%
+  max-width 400px
+  max-height 100px
+  overflow-y scroll
+  background-color white
+  p
+    padding 5px
+    margin 0
+    &:hover
+      background-color $green-light
+      cursor pointer
+      color white
 form
-  .search--results
-    display inline-block
-    display none
-    position absolute
-    z-index 10
-    width 95%
-    max-height 100px
-    overflow-y scroll
-    background-color white
-    p
-      padding 5px
-      margin 0
-      &:hover
-        background-color $green-light
-        cursor pointer
-        color white
   input
     width 350px
   textarea

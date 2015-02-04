@@ -2,7 +2,26 @@ extends ../layout
 
 block content
   p #{party.name} by #{party._owner.username}
+  -if(user.username === party._owner.username)
+    a.btn-sm.btn-danger.party-delete(href="/parties/#{party.slug}") Delete
+    a.btn-sm.btn-success(href="/parties/#{party.slug}/edit") Edit
   p #{party.description}
   h2 Attendees
   each attendee in party.attendees
     p #{attendee._user.username}
+
+  label.control-label Rezepte
+  input.form-control.js--search-recipe(
+    type='text'
+    placeholder=Recipes
+    data-slug="#{party.slug}")
+  .search-recipe-results
+  .recipe-results
+    each attendee in party.attendees
+      -if(attendee.recipes.length > 0)
+        each recipe in attendee.recipes
+          p.party-recipes(data-slug="#{recipe.slug}") #{recipe.name} by #{attendee._user.username}
+            -if(attendee._user.username === user.username)
+              a.party--recipe-remove.btn-sm.btn-danger(
+                href="/parties/#{party.slug}/rmrecipe"
+                data-slug="#{recipe.slug}") Delete

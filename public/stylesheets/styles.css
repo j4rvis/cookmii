@@ -346,21 +346,25 @@ textarea {
 .form--actions {
   margin-top: 30px;
 }
-form .search--results {
+.search-user-results,
+.search-recipe-results {
   display: inline-block;
   display: none;
   position: absolute;
   z-index: 10;
   width: 95%;
+  max-width: 400px;
   max-height: 100px;
   overflow-y: scroll;
   background-color: #fff;
 }
-form .search--results p {
+.search-user-results p,
+.search-recipe-results p {
   padding: 5px;
   margin: 0;
 }
-form .search--results p:hover {
+.search-user-results p:hover,
+.search-recipe-results p:hover {
   background-color: #66bb6a;
   cursor: pointer;
   color: #fff;

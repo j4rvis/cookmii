@@ -6,8 +6,8 @@ AttendeeSchema = new Schema
     type: Schema.Types.ObjectId
     ref: 'User'
   recipes: [
-    type: String
-    ref: 'Recipe'
+    name: String
+    slug: String
   ]
 
 PartySchema = new Schema

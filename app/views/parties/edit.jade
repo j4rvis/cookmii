@@ -1,0 +1,62 @@
+extends ../layout
+
+block content
+  h2 Edit Party
+  form.form-horizontal.party--form(method="POST")
+    .col-md-6
+      .form-group
+        label.control-label Name
+        input.form-control(
+          type='text'
+          placeholder=Name
+          name='name'
+          value=party.name
+          required=true)
+      //- .form-group
+      //-   label.control-label Place
+      //-   input.form-control(
+      //-     type='text'
+      //-     placeholder=Place
+      //-     name='place'
+      //-     value=party.place
+      //-     required=false)
+      .form-group
+        label.control-label Date
+        input.form-control(
+          type='date'
+          name='date'
+          value=party.date
+          required=true)
+      .form-group
+        label.control-label Time
+        input.form-control(
+          type='Time'
+          name='time'
+          value=party.time
+          required=true)
+    .col-md-6
+      .form-group
+        label.control-label Beschreibung
+        textarea.form-control(
+          placeholder=Beschreibung
+          name='description')
+          = party.description
+      .form-group
+        label.control-label Teilnehmer
+        input.form-control.js--search-user(
+          type='text'
+          placeholder=User)
+        .search-user-results
+        each attendee in party.attendees
+            div
+              input.form-control.party--users(
+                name="attendees"
+                type="text"
+                value=attendee._user.username
+                readonly)
+              -if(attendee._user.username != user.username)
+                a.user-delete.btn-sm.btn-danger(href="") Delete
+    .col-md-12
+      .form--actions.pull-right
+        button.btn.btn-lg.btn-default(type="reset") Cancel
+        button.btn.btn-lg.btn-success(type="submit") Edit

@@ -11,8 +11,8 @@ class RecipeCtrl extends require './BaseCtrl'
     super text
 
   create: (req,res) =>
-    ingredients = req.body.ingredients;
-    categories = req.body.categories;
+    ingredients = req.body.ingredients
+    categories = req.body.categories
     recipe = new Recipe
       name: req.body.name
       slug: @slugify_unique(req.body.name)
@@ -110,5 +110,15 @@ class RecipeCtrl extends require './BaseCtrl'
     ,(err, recipes) ->
       res.render 'recipes/index',
         recipes: recipes
+
+  search: (req, res) =>
+    Recipe.find {'name': new RegExp(req.body.search, "i")}, 'name slug'
+    .exec (err, result) ->
+      excluded = []
+      unless _.isEmpty req.body.excluded
+        excluded.push req.body.excluded
+      result = _.filter result, (obj) =>
+        return !_.contains(_.flatten(excluded), obj.name)
+      if err then res.send(err) else res.send(result)
 
 module.exports = RecipeCtrl

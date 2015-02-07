@@ -7,7 +7,7 @@ module.exports = (grunt) ->
         expand: true
         cwd: "app/assets"
         src: [
-          "javascripts/*.coffee"
+          "javascripts/**/*.coffee"
         ]
         dest: "public/"
         ext: ".js"
@@ -62,6 +62,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-stylus"
   grunt.loadNpmTasks "grunt-contrib-clean"
   grunt.loadNpmTasks "grunt-express-server"
+  grunt.loadNpmTasks('grunt-contrib-copy')
 
   grunt.registerTask "default",
   "Watches the project for changes, automatically builds them and runs a server.", [

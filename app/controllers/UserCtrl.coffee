@@ -32,11 +32,11 @@ class UserCtrl extends require './BaseCtrl'
   render: (req, res) =>
     User.findOne
       'username': req.params.user
-    ,(err, user) ->
+    .exec (err, user) ->
       if res.locals.user.username is req.params.user
         Recipe.find
           author: user.username
-        ,(err, recipes) ->
+        .exec (err, recipes) ->
           res.render "users/profile",
             profile: user
             recipes: recipes
@@ -44,7 +44,7 @@ class UserCtrl extends require './BaseCtrl'
         Recipe.find
           author: user.username
           isPublic: true
-        ,(err, recipes) ->
+        .exec (err, recipes) ->
           res.render "users/profile",
             profile: user
             recipes: recipes
@@ -53,5 +53,17 @@ class UserCtrl extends require './BaseCtrl'
       if err then res.send(err)
       res.render 'users/index',
         users: users
+
+  search: (req, res) =>
+    User.find {'username': new RegExp(req.body.search, "i")}, 'username'
+    .exec (err, result) ->
+      excluded = []
+      unless _.isEmpty req.body.excluded
+        excluded.push req.body.excluded
+      excluded.push res.locals.user.username
+      result = _.filter result, (obj) =>
+        return !_.contains(_.flatten(excluded), obj.username)
+      if err then res.send(err) else res.send(result)
+
 
 module.exports = UserCtrl

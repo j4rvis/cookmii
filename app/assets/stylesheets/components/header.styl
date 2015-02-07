@@ -34,28 +34,18 @@
         font-size 1.2em
         cursor pointer
 .header--user
-  height 250px
-  display flex
+  width 100%
   flex-flow column nowrap
-  justify-content space-around
-  .header--user-image
-    img
-      border-radius 50px
-      background-size auto 100%
-      background-position-x center
-      width 100px
-      height 100px
+  justify-content flex-end
   .header--user-actions
+    padding-bottom 20px
     display flex
+    justify-content space-between
     color white
-    flex 0.5
-    flex-flow column nowrap
-    justify-content flex-end
-    padding-bottom 30px
     a
+      margin 0 auto
       padding 10px
-      margin 0 auto 10px auto
-      width 80%
+      display inline-block
       background $green
       box-shadow 0 4px 0 $green-dark
       border-radius 5px

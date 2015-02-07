@@ -42,7 +42,6 @@ class HomeCtrl extends require './BaseCtrl'
           bestRecipes = best
           return callback()
     ], (err) =>
-      console.log 'finish', @ingredients
       if err then throw err
       res.render 'index',
         ingredients: ingredients
@@ -56,7 +55,7 @@ class HomeCtrl extends require './BaseCtrl'
         {'categories.name': new RegExp(req.body.search, "i")}
         {'ingredients.name': new RegExp(req.body.search, "i")}
       ]
-    , (err, recipes) ->
+    .exec (err, recipes) ->
       if err then res.send(err)
       res.render 'recipes/index',
         recipes: recipes

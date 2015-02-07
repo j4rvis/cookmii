@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .header.clearfix
+    h1.pull-left Parties
+    a.btn.btn-success(href="parties/new") Neu
+  table.table.table-condensed
+    tr
+      th Name
+      th Owner
+      th Date
+      th Attendees
+    each party in parties
+      tr
+        td: a.link--green(href="parties/#{party.slug}") #{party.name}
+        td: a.btn-sm.btn-success(href="users/#{party._owner.username}") #{party._owner.username}
+        td #{party.date} #{party.time}
+        td #{party.attendees.length}

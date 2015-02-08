@@ -72,11 +72,17 @@ mixin card(size, recipe)
       - if(recipe.image)
         .card--image(class=size)
           - if(recipe.slug!='') var link = '/recipes/' + recipe.slug; else var link = '#'
-          a(href=link)
+          -if(size.indexOf('large') >= 0 )
             if recipe.image!='' && recipe.image != undefined
               img(style="background-image: url('#{recipe.image}')")
             else
               img(style="background-image: url('/static/default_recipe.jpg')")
+          - else
+            a(href=link)
+              if recipe.image!='' && recipe.image != undefined
+                img(style="background-image: url('#{recipe.image}')")
+              else
+                img(style="background-image: url('/static/default_recipe.jpg')")
           .card--fav-button
             -if(recipe.isFav) var star = 'fa-star'
             -else var star = 'fa-star-o'

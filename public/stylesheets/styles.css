@@ -1,16 +1,4 @@
 /* Mixins */
-.is-orange {
-  color: #ffb300;
-}
-.is-orange-dark {
-  color: #ffb300;
-}
-.is-green {
-  color: #43a047;
-}
-.is-green-dark {
-  color: #1b5e20;
-}
 @font-face {
   font-family: Roboto-Medium;
   src: url("/fonts/Roboto-Medium.ttf");
@@ -18,53 +6,6 @@
   src: url("/fonts/Roboto-Thin.ttf");
   font-family: Roboto-Regular;
   src: url("/fonts/Roboto-Regular.ttf");
-}
-body {
-  font-family: 'Roboto-Regular', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  font-size: 18px;
-  flex-direction: row;
-}
-header {
-  background: #ef6c00;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  min-width: 200px;
-  min-height: 200px;
-  flex: 1;
-}
-main {
-  overflow-y: auto;
-  background: #e9e9e9;
-  padding: 20px;
-  flex: 8;
-  font-size: 1em;
-}
-html {
-  height: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0.25em 0;
 }
 a {
   text-decoration: none;
@@ -81,68 +22,215 @@ a.link--green {
 a.link--green:hover {
   color: #1b5e20;
 }
+html {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.25em 0;
+}
+body {
+  background: #eee;
+  font-family: 'Roboto-Regular', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 18px;
+}
+@media screen and (max-device-width: 900px) {
+  body {
+    font-size: 70px;
+  }
+}
+header {
+  width: 100%;
+  height: 70px;
+  background: #ffa000;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+}
+@media screen and (max-device-width: 900px) {
+  header {
+    height: 200px;
+  }
+}
+main {
+  margin: 70px auto 0 auto;
+  width: 1000px;
+  padding: 20px;
+}
+@media screen and (max-device-width: 900px) {
+  main {
+    height: 200px;
+    margin: 200px 0 50px 0;
+    width: 100%;
+  }
+}
 .header--logo {
-  height: 100px;
-  width: 140px;
-  margin: 30px auto;
-  position: relative;
+  padding: 15px 0 0 20px;
+  line-height: 40px;
+  width: 150px;
+  font-size: 1.7em;
   text-decoration: none;
   color: #fff;
 }
-.header--logo .fa-spoon {
-  font-size: 4em;
-  position: absolute;
-  left: 0;
+@media screen and (min-device-width: 900px) and (min-width: 900px) {
+  .header--logo {
+    float: left;
+  }
 }
-.header--logo .first,
-.header--logo .second {
-  text-align: left;
-  padding-left: 40px;
-  font-size: 2.25em;
-  line-height: 35px;
+.header--logo .fa-spoon {
+  font-size: 1em;
+  float: left;
+}
+@media screen and (max-device-width: 900px) {
+  .header--logo {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    padding: 0;
+    width: 550px;
+    line-height: 200px;
+  }
+  .header--logo .fa-spoon {
+    padding-top: 40px;
+  }
+}
+.header--navigation-button,
+.header--user-button {
+  display: none;
+}
+@media screen and (max-device-width: 900px) {
+  .header--navigation-button,
+  .header--user-button {
+    display: block;
+    color: #1b5e20;
+    font-size: 1.5em;
+    position: absolute;
+    height: 100px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+  }
+  .header--navigation-button.header--navigation-button,
+  .header--user-button.header--navigation-button {
+    left: 40px;
+  }
+  .header--navigation-button.header--user-button,
+  .header--user-button.header--user-button {
+    right: 40px;
+  }
 }
 .header--navigation {
-  flex: 1;
-}
-.header--navigation ul {
+  font-size: 1.25em;
+  margin-left: 50px;
+  float: left;
   list-style: none;
-  text-align: center;
-  padding: 0;
 }
-.header--navigation ul li {
-  text-align: left;
+.header--navigation li {
   padding: 10px;
-  padding-right: 30px;
-  height: 40px;
-  font-size: 1em;
-  line-height: 20px;
+  margin: 10px 10px 10px 0;
+  border-radius: 10px;
 }
-.header--navigation ul li:hover {
-  background: #43a047;
-  font-size: 1.2em;
+@media screen and (min-device-width: 900px) and (min-width: 900px) {
+  .header--navigation li {
+    float: left;
+  }
+}
+.header--navigation li:hover {
   cursor: pointer;
+  background: #66bb6a;
+}
+@media screen and (max-device-width: 900px) {
+  .header--navigation {
+    position: absolute;
+    top: 190px;
+    left: -5%;
+    display: none;
+    width: 10%;
+    height: 100vh;
+    background: #ffa000;
+  }
 }
 .header--user {
-  width: 100%;
-  flex-flow: column nowrap;
-  justify-content: flex-end;
+  margin-top: 15px;
+  height: 70px;
+  float: right;
+  width: 250px;
 }
-.header--user .header--user-actions {
-  padding-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
+.header--user .header--user-image {
+  margin-right: 20px;
+  float: left;
+  width: 40px;
+  height: 40px;
+  background: #f00;
+}
+.header--user .header--user-name {
+  line-height: 40px;
+  margin-right: 20px;
   color: #fff;
 }
-.header--user .header--user-actions a {
-  margin: 0 auto;
-  padding: 10px;
-  display: inline-block;
-  background: #43a047;
-  box-shadow: 0 4px 0 #1b5e20;
-  border-radius: 5px;
+@media screen and (min-device-width: 900px) and (min-width: 900px) {
+  .header--user .header--user-name {
+    float: left;
+  }
 }
-.header--user .header--user-actions a:hover {
-  background: #1b5e20;
+@media screen and (max-device-width: 900px) {
+  .header--user .header--user-name {
+    width: 200px;
+    margin: 20px auto;
+  }
+}
+.header--user .header--user-actions {
+  line-height: 40px;
+  margin-right: 20px;
+}
+@media screen and (min-device-width: 900px) and (min-width: 900px) {
+  .header--user .header--user-actions {
+    float: right;
+  }
+}
+@media screen and (max-device-width: 900px) {
+  .header--user .header--user-actions {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .header--user .header--user-actions a {
+    margin: 20px;
+  }
+}
+.header--user .header--user-actions a {
+  margin-right: 10px;
+}
+@media screen and (max-device-width: 900px) {
+  .header--user {
+    display: none;
+    position: absolute;
+    top: 180px;
+    right: -5%;
+    width: 10%;
+    height: 100vh;
+    background: #ffa000;
+  }
 }
 .recipe--categories {
   list-style: none;
@@ -153,7 +241,7 @@ a.link--green:hover {
 }
 .recipe--categories li {
   color: #fff;
-  padding: 5px;
+  padding: 5px 10px;
   background: #43a047;
   border-radius: 5px;
   margin-top: 10px;
@@ -233,7 +321,7 @@ a.link--green:hover {
 .card--image.large {
   height: 250px;
 }
-.card--image a img {
+.card--image img {
   left: 0;
   position: absolute;
   z-index: 0;
@@ -244,7 +332,7 @@ a.link--green:hover {
   height: 100%;
   transition: all 0.2s ease;
 }
-.card--image a img:hover {
+.card--image img:hover {
   transform: scale(1.2);
 }
 .card--fav-button {
@@ -267,7 +355,7 @@ a.link--green:hover {
   font-size: 1.5em;
 }
 .card--fav-button .fa.fa-star {
-  color: #ffb300;
+  color: #ffa000;
 }
 .card--fav-button .fa:hover {
   color: #ffa500;
@@ -291,7 +379,7 @@ a.link--green:hover {
 .btn {
   margin-right: 16px;
 }
-@media screen and (max-device-width: 1000px) {
+@media screen and (max-device-width: 900px) {
   .form-group {
     margin-top: 50px;
   }
@@ -311,7 +399,7 @@ a.link--green:hover {
     font-size: 50px;
   }
 }
-@media screen and (min-device-width: 1000px) and (min-width: 1000px) {
+@media screen and (min-device-width: 900px) and (min-width: 900px) {
   input[type="checkbox"] {
     width: 20px;
     height: 20px;

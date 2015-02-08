@@ -1,35 +1,31 @@
 header
-  //- .header--burger.fa.fa-bars
   .header--logo
-    a(href="/")
-      .fa.fa-spoon
-      .first Cook
-      .second Mii
-  .header--navigation
-    ul
-      li
-        a(href="/recipes/") Alle Rezepte
-      -if(user)
-        li
-          a(href="/users") Alle Nutzer
-        li
-          a(href="/recipes/own") Eigene Rezepte
-        li
-          a(href="/favorites/") Favoriten
-        li
-          a(href="/recipes/new") Neues Rezept
-        li
-          a(href="/parties") Parties
+    span.fa.fa-spoon
+    a.header--title(href="/") CookMii
 
-  //- .header--icon
-  //-   .fa.fa-user
+  .header--navigation-button.fa.fa-bars
+  ul.header--navigation
+    li
+      a(href="/recipes/") Recipes
+    -if(user)
+      li
+        a(href="/users") Users
+      li
+        a(href="/favorites/") Favorites
+      li
+        a(href="/recipes/new") New Recipe
+      li
+        a(href="/parties") Parties
+
+  .header--user-button.fa.fa-user
   .header--user
     -if(user)
-      h2 #{user.username}
+      //- .header--user-image
+      .header--user-name #{user.username}
     .header--user-actions
       -if(user)
-        a(href="/users/#{user.username}") Profil
-        a(href="/logout") Logout
+        a.btn.btn-success(href="/users/#{user.username}") Profil
+        a.btn.btn-success(href="/logout") Logout
       -else
-        a(href="/register") Register
-        a(href="/login") Login
+        a.btn.btn-success(href="/register") Register
+        a.btn.btn-success(href="/login") Login

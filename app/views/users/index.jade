@@ -7,5 +7,5 @@ block content
       tr: th Name
     tbody
       each user in users
-        tr: th: p: a.link--green(href="/#{user.username}")
+        tr: th: p: a.link--green(href="/users/#{user.username}")
           = user.username

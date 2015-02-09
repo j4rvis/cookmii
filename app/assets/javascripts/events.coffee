@@ -3,11 +3,33 @@ $ ->
     $(".js--fieldset-delete").on 'click', ->
       $(this).parents('.js--ingredient-form, .js--category-form').remove()
 
-  $(".header--burger").on 'click', ->
-    $('nav').slideToggle(300)
+  $(".header--navigation-button").on 'click', ->
+    if($('.header--navigation').css('display') == 'none')
+      if($('.header--user').css('display') == 'block')
+        $('.header--user').animate
+          width: '10%'
+          "fast"
+          , -> $(@).hide()
+      $('.header--navigation').show().animate({width: '80%'},"fast")
+    else
+      $('.header--navigation').animate
+        width: '10%'
+        "fast"
+        , -> $(@).hide()
 
-  $(".header--icon").on 'click', ->
-    $('nav').slideToggle(300)
+  $(".header--user-button").on 'click', ->
+    if($('.header--user').css('display') == 'none')
+      if($('.header--navigation').css('display') == 'block')
+        $('.header--navigation').animate
+          width: '10%'
+          "fast"
+          , -> $(@).hide()
+      $('.header--user').show().animate({width: '80%'},"fast")
+    else
+      $('.header--user').animate
+        width: '10%'
+        "fast"
+        , -> $(@).hide()
 
   $(".js--fieldset-delete").on 'click', ->
     $(this).parents('.js--ingredient-form, .js--category-form').remove()

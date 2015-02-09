@@ -5,11 +5,45 @@
         return $(this).parents('.js--ingredient-form, .js--category-form').remove();
       });
     });
-    $(".header--burger").on('click', function() {
-      return $('nav').slideToggle(300);
+    $(".header--navigation-button").on('click', function() {
+      if ($('.header--navigation').css('display') === 'none') {
+        if ($('.header--user').css('display') === 'block') {
+          $('.header--user').animate({
+            width: '10%'
+          }, "fast", function() {
+            return $(this).hide();
+          });
+        }
+        return $('.header--navigation').show().animate({
+          width: '80%'
+        }, "fast");
+      } else {
+        return $('.header--navigation').animate({
+          width: '10%'
+        }, "fast", function() {
+          return $(this).hide();
+        });
+      }
     });
-    $(".header--icon").on('click', function() {
-      return $('nav').slideToggle(300);
+    $(".header--user-button").on('click', function() {
+      if ($('.header--user').css('display') === 'none') {
+        if ($('.header--navigation').css('display') === 'block') {
+          $('.header--navigation').animate({
+            width: '10%'
+          }, "fast", function() {
+            return $(this).hide();
+          });
+        }
+        return $('.header--user').show().animate({
+          width: '80%'
+        }, "fast");
+      } else {
+        return $('.header--user').animate({
+          width: '10%'
+        }, "fast", function() {
+          return $(this).hide();
+        });
+      }
     });
     $(".js--fieldset-delete").on('click', function() {
       return $(this).parents('.js--ingredient-form, .js--category-form').remove();

@@ -7,7 +7,12 @@ block content
         placeholder="Suche nach Rezeptname, Kategorie oder Zutat")
 
   .card--layout
-    .card--container
+    .card--container.first
+      +card('medium')(title='Best recipes')
+        each bestRecipe in bestRecipes
+          +card('medium inline', bestRecipe)(subtitle=bestRecipe.name)
+
+    .card--container.second
       +card('medium')(title='Most used ingredients')
         each ingredient in ingredients
           p #{ingredient._id} #{ingredient.count}
@@ -16,7 +21,3 @@ block content
         each category in categories
           p #{category._id} #{category.count}
 
-    .card--container
-      +card('medium')(title='Best recipes')
-        each bestRecipe in bestRecipes
-          +card('medium inline', bestRecipe)(subtitle=bestRecipe.name)

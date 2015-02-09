@@ -5,28 +5,9 @@
   align-content space-around
   &.left
     justify-content flex-start
-.card--main
-  align-self flex-start
-  // margin 0 25px 25px 0
-  background white
-  margin-bottom 25px
-  box-shadow 0 2px 8px 0 rgba(0,0,0,.25)
-  border-radius 2px
-  display inline-block
-  &.small
-    width 220px
-  &.medium
-    width 330px
-  &.large
-    width 600px
-  &.inline
-    margin-top 25px
-    box-shadow none
-    border-radius 0
-    border-bottom 1px solid #CCC
-    margin-left -16px
-
 .card--container
+  @media mobile
+    width 100%
   display flex
   justify-content flex-start
   align-content flex-start
@@ -39,7 +20,31 @@
     order 3
   &.fourth
     order 4
-
+.card--main
+  align-self flex-start
+  background white
+  margin-bottom 25px
+  box-shadow 0 2px 8px 0 rgba(0,0,0,.25)
+  border-radius 2px
+  display inline-block
+  &.small
+    width 220px
+    @media mobile
+      width 100%
+  &.medium
+    width 330px
+    @media mobile
+      width 100%
+  &.large
+    width 600px
+    @media mobile
+      width 100%
+  &.inline
+    margin-top 25px
+    box-shadow none
+    border-radius 0
+    border-bottom 1px solid #CCC
+    margin-left -16px
 .card--title
     padding 16px
     font-size 1.5em
@@ -54,10 +59,16 @@
   text-align center
   &.small
     height 100px
+    @media mobile
+      height 200px
   &.medium
     height 150px
+    @media mobile
+      height 300px
   &.large
     height 250px
+    @media mobile
+      height 400px
   img
     left 0
     position absolute
@@ -75,6 +86,10 @@
   position absolute
   width 50px
   height 70px
+  @media mobile
+    width 100px
+    height 140px
+    font-size 0.6em
   top 0
   right 0
   background $green
@@ -104,6 +119,9 @@
 .card--content
   color black
   font-size 1em
+  @media mobile
+    p
+      font-size 0.6em
   padding 16px
-.btn
-  margin-right 16px
+  .btn
+    margin-right 16px
